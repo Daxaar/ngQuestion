@@ -1,0 +1,14 @@
+{
+  "name": "angular",
+  "version": "1.0.0",
+  "description": "Angular application created from scratch.  No generators or templates.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Darren Lewis",
+  "license": "ISC",
+  "devDependencies": {
+    "bower": "^1.6.3"
+  }
+}
