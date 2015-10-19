@@ -4,11 +4,13 @@
   "description": "Angular application created from scratch.  No generators or templates.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "http-server ."
   },
   "author": "Darren Lewis",
   "license": "ISC",
   "devDependencies": {
-    "bower": "^1.6.3"
+    "bower": "^1.6.3",
+    "http-server": "^0.8.5"
   }
 }

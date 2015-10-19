@@ -1,0 +1,24 @@
+<html ng-app="learnandgame">
+	<head>
+		<script lang="javascript" src="bower_components/angular/angular.js"></script>
+		<script src="app.js"></script>
+	</head>
+	<body>
+		<div ng-controller="MainController as main">
+			<p>Hello {{main.name}}!</p>
+			<input type="text" ng-model="main.updatedName">
+			<button ng-click="main.changeName()"></button>
+		</div>
+
+		<div ng-controller="QuestionController as q">
+			<ul ng-repeat="question in q.questions">
+				<li ng-show="question.show()">{{question.text}}
+					<input ng-hide="question.answers" ng-model="question.value"/>
+					<select ng-show="question.answers" ng-model="question.value"/>
+						<option ng-repeat="answer in question.answers">{{answer}}</option>
+					</select>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
