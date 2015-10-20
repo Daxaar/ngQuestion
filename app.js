@@ -1,61 +1,67 @@
+(function() {
 
-(function(){
+  'use strict';
 
-	var app = angular.module("learnandgame",[]);
+  var app = angular.module("MyApp", []);
 
-	app.controller('MainController',MainController);
-	
-	function MainController(){
-		this.name = 'Darren Lewis';
-		
-		this.updatedName = '';
-		
-		this.changeName = function(){
-			this.name = this.updatedName;
-		}
-	};
+  app.controller("MainController", MainController);
 
-	//angular.module("learnandgame")
-	app.controller('QuestionController', QuestionController);
+  function MainController() {
 
-	function QuestionController(){
-		
-		var self = this;
+    var self = this;
 
-		this.questions = [
-			{
-				text: "Seriously, you support them?",
-				show: function(){
-					return self.questions[1].value == "Manchester United";
-				}
-			},
-			{
-				text: "What is your favourite football team?",
-				answers: ["Arsenal","Chelsea","Manchester United"],
-				value: "No",
-				show: function(){
-					return true;
-				}
-			},			
-			{
-				text: "What is the day?",
-				show: function(){
-					return true;
-				}
+    this.questions = [{
+      id: 1,
+      answer: "",
+      order: 1,
+      text: "What is your favourite football team?",
+      answers: [{
+        id: 1,
+        text: "Manchester United"
+      }, {
+        id: 2,
+        text: "Arsenal"
+      }, {
+        id: 3,
+        text: "Chelsea"
+      }],
+      visible: function() {
+        return true;
+      }
+    }, {
+      id: 2,
+      answer: "",
+      order: 2,
+      text: "Seriously?  You support them?",
+      answers: [{
+        id: 1,
+        text: "Yes"
+      }, {
+        id: 2,
+        text: "No"
+      }],
+      visible: function() {
+        return self.questions[0].answer == 1;
+      }
+    }, {
+      id: 3,
+      answer: "",
+      order: 3,
+      text: "How long have you supported this team?",
+      answers: [{
+        id: 1,
+        text: "5 Minutes"
+      }, {
+        id: 2,
+        text: "1 Year"
+      }, {
+        id: 3,
+        text: "All My Damn Life!"
+      }],
+      visible: function() {
+        return true;
+      }
+    }];
+  }
 
-			}
-
-		];
-	};
-
-	var Question = function(text, answers,displayRule){
-		this.text = text;
-		this.answers = answers;
-		this.show = displayRule || this.show;
-	};
-
-	Question.prototype.show = function(){
-		return true;
-	};
-		
 }());
