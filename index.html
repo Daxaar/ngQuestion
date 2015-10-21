@@ -14,8 +14,8 @@
 
 		Total Questions : {{main.questions.length}}
 
-		<table ng-repeat="q in main.questions">
-			<tr ng-show="q.visible()">
+		<table>
+			<tr ng-repeat="q in main.questions" ng-show="q.visible()">
 				<td>{{q.text}}</td>
 				<td>
 					<select ng-model="q.answer">
@@ -24,8 +24,12 @@
 				</td>
 			</tr>
 		</table>
-
-		{{main.answer}}
+<br/>
+		<div style="font-family:Menlo;font-size:0.8em" ng-repeat="q in main.questions">
+			<div>
+				{{q}}
+			</div>
+		</div>
 	</div>
 
 
