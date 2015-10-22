@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "http-server ."
+    "start": "live-server ."
   },
   "author": "Darren Lewis",
   "license": "ISC",
   "devDependencies": {
     "bower": "^1.6.3",
-    "http-server": "^0.8.5"
+    "http-server": "^0.8.5",
+    "live-server": "^0.8.2"
   }
 }
