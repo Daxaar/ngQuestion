@@ -4,18 +4,20 @@
 <head>
 	<script lang="javascript" src="bower_components/angular/angular.js"></script>
 	<script src="app.js"></script>
+	<script src="app/board/board.service.js"></script>
+	<script src="app/board/board.controller.js"></script>
 	<meta charset="utf-8">
 	<title>JS Bin</title>
 </head>
 
 <body ng-app="MyApp">
 
-	<div ng-controller="MainController as main">
+	<div ng-controller="BoardController as board">
 
-		Total Questions : {{main.questions.length}}
+		Total Questions : {{board.questions.length}}
 
 		<table>
-			<tr ng-repeat="q in main.questions" ng-show="q.visible()">
+			<tr ng-repeat="q in board.questions" ng-show="q.visible()">
 				<td>{{q.text}}</td>
 				<td>
 					<select ng-model="q.answer" ng-options="a.id as a.text for a in q.answers">
@@ -25,7 +27,7 @@
 			</tr>
 		</table>
 <br/>
-		<div style="font-family:Menlo;font-size:0.8em" ng-repeat="q in main.questions">
+		<div style="font-family:Menlo;font-size:0.8em" ng-repeat="q in board.questions">
 			<div>
 				{{q}}
 			</div>
