@@ -2,6 +2,24 @@
 
   'use strict';
 
-  angular.module("MyApp",['myapp.boards']);
+  angular.module("MyApp",['myapp.boards','ui.router'])
+    .config(['$stateProvider',configure]);
+
+  function configure($stateProvider) {
+    $stateProvider
+    .state('create', {
+      url: "/boards/create",
+      templateUrl: 'app/board/views/create.html'
+    })
+    .state('view',{
+      url: "/boards/view",
+      templateUrl: 'app/board/views/view.html'
+    })
+    .state('list',{
+      url: "/boards",
+      templateUrl: 'app/board/views/list.html'
+    });
+
+  }
 
 }());

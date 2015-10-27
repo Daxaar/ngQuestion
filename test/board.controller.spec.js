@@ -3,7 +3,6 @@ describe('BoardController', function(){
   var BoardController;
 
   beforeEach(module("MyApp"));
-  beforeEach(module('myapp.boards'));
 
   beforeEach(inject(function ($controller) {
     BoardController = $controller('BoardController');

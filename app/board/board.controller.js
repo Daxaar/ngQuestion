@@ -8,6 +8,8 @@
 
   function BoardController(boardService) {
 
+    this.title = 'Create a Board';
+
     var self = this;
     this.service = boardService;
 
