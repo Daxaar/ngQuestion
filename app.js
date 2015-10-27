@@ -2,13 +2,15 @@
 
   'use strict';
 
-  var app = angular.module("MyApp", []);
+  angular.module("MyApp",['myapp.boards'])
+    .controller("MainController", MainController);
 
-  app.controller("MainController", MainController);
+  MainController.$inject = ['BoardService'];
 
-  function MainController() {
+  function MainController(boardService) {
 
     var self = this;
+    this.service = boardService;
 
     this.questions = [{
       id: 1,
