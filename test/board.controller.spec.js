@@ -1,31 +1,31 @@
-describe('MainController', function(){
+describe('BoardController', function(){
 
-  var mainController;
+  var BoardController;
 
   beforeEach(module("MyApp"));
   beforeEach(module('myapp.boards'));
 
   beforeEach(inject(function ($controller) {
-    mainController = $controller('MainController');
+    BoardController = $controller('BoardController');
   }));
 
   it('is defined', function() {
-    expect(mainController).toBeDefined();
+    expect(BoardController).toBeDefined();
   });
 
   it('exposes the BoardService (for testing)',function () {
-    expect(mainController.service).toBeDefined();
+    expect(BoardController.service).toBeDefined();
   });
 
   it('service has getAll fn',function () {
-    expect(mainController.service.getAll).toBeDefined();
+    expect(BoardController.service.getAll).toBeDefined();
   });
 
   it('has questions property defined', function () {
-    expect(mainController.questions).toBeDefined();
+    expect(BoardController.questions).toBeDefined();
   });
 
   it('has the BoardService injected', function () {
-    expect(mainController.service).toBeDefined();
+    expect(BoardController.service).toBeDefined();
   });
 });
