@@ -8,10 +8,26 @@
 
   function BoardController(boardService) {
 
-    this.title = 'Create a Board';
+    var vm = this;
 
-    var self = this;
-    this.service = boardService;
+    this.title = 'Create a Board';
+    this.name = "";
+    this.createdBy = "todo: read auth user";
+
+    this.addQuestion = function(){
+      console.log('addQuestion');
+      this.questions.push(this.current);
+      this.current = new Question();
+    };
+
+    this.addAnswer = function(){
+      this.current.answers.push({
+        id: this.current.answers.length+1,
+        text: this.current.answer.text
+      });
+      this.current.answer = null;
+    };
+    this.current = this.current || new Question();
 
     this.questions = [{
       id: 1,
@@ -66,4 +82,13 @@
       }
     }];
   }
+
+  function Question(){
+    this.id = null;
+    this.text = "";
+    this.answers = [];
+    this.answer = "";
+    this.order = null;
+  }
+
 })();
