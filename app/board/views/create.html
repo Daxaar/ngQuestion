@@ -32,7 +32,14 @@
   Answer:
   <input ng-value="vm.current.answer.id" ng-model="vm.current.answer.text"/><button ng-click="vm.addAnswer()">Add</button>
   <!-- <select ng-options="a.id as a.text for a in vm.current.answers"></select> -->
-  <select ng-show="vm.current.answers.length > 0" ng-model="vm.current.answer" ng-options="a.text for a in vm.current.answers"></select>
+  <!-- <select ng-show="vm.current.answers.length > 0" ng-model="vm.current.answer" ng-options="a.text for a in vm.current.answers"></select> -->
+  <ul>
+    <li ng-repeat="answer in vm.current.answers">
+      {{answer.text}} |
+      <a ng-show="vm.current.answers.length > 0" ng-click="vm.removeAnswer(answer)" href="">Remove</a>
+    </li>
+
+  </ul>
 </label>
 </div>
 

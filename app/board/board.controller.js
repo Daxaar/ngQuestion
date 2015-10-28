@@ -15,9 +15,8 @@
     this.createdBy = "todo: read auth user";
 
     this.addQuestion = function(){
-      console.log('addQuestion');
       this.questions.push(this.current);
-      this.current = new Question();
+      this.current = this.createQuestion();
     };
 
     this.addAnswer = function(){
@@ -29,65 +28,28 @@
     };
     this.current = this.current || new Question();
 
-    this.questions = [{
-      id: 1,
-      answer: "",
-      order: 1,
-      text: "What is your favourite football team?",
-      answers: [{
-        id: 1,
-        text: "Manchester United"
-      }, {
-        id: 2,
-        text: "Arsenal"
-      }, {
-        id: 3,
-        text: "Chelsea"
-      }],
-      visible: function() {
-        return true;
-      }
-    }, {
-      id: 2,
-      answer: "",
-      order: 2,
-      text: "Seriously?  You support them?",
-      answers: [{
-        id: 1,
-        text: "Yes"
-      }, {
-        id: 2,
-        text: "No"
-      }],
-      visible: function() {
-        return self.questions[0].answer == 1;
-      }
-    }, {
-      id:   3,
-      answer: "",
-      order: 3,
-      text: "How long have you supported this team?",
-      answers: [{
-        id: 1,
-        text: "5 Minutes"
-      }, {
-        id: 2,
-        text: "1 Year"
-      }, {
-        id: 3,
-        text: "All My Damn Life!"
-      }],
-      visible: function() {
-        return true;
-      }
-    }];
+    this.removeAnswer = function(answer){
+      this.current.answers = this.current.answers.filter(function (e) {
+        return e.id !== answer.id;
+      });
+    };
+
+    this.questions = [];
+
+    this.createQuestion = function(){
+      return new Question();
+    };
+
+    this.createBoard = function(){
+      boardService.create(this.name,this.questions);
+    };
   }
 
   function Question(){
     this.id = null;
-    this.text = "";
+    this.text = null;
     this.answers = [];
-    this.answer = "";
+    this.answer = null;
     this.order = null;
   }
 
