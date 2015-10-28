@@ -1,0 +1,18 @@
+label {
+  /*display:block;*/
+  padding-bottom: 10px;
+  width:100px;
+}
+
+h2{
+  color:blue;
+}
+
+#existingQuestions{
+    background-color: grey;
+    float:left;
+}
+
+#questionPanel{
+  background-color: gainsboro; 
+}

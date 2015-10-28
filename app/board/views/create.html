@@ -1,0 +1,41 @@
+<section ng-controller="BoardController as vm">
+<h2>{{vm.title}}</h2>
+
+<div>
+<label for="name">Board Name:
+  <input ng-model="vm.name" type="textbox"/>
+</label>
+</div>
+
+<div id="existingQuestions">
+  Existing Questions on Board
+  <ul>
+  <li ng-repeat="q in vm.questions">
+    {{q.text}}
+  </li>
+  </ul>
+</div>
+
+<div id="questionPanel">
+<h4>Create a question</h4>
+<label for="">
+  Text:
+  <input ng-model="vm.current.text"/>
+</label>
+
+<label for="">
+  Order:
+  <input ng-model="vm.current.order" ng-value="{{vm.questions.length+1}}"/>
+</label>
+
+<label for="">
+  Answer:
+  <input ng-value="vm.current.answer.id" ng-model="vm.current.answer.text"/><button ng-click="vm.addAnswer()">Add</button>
+  <!-- <select ng-options="a.id as a.text for a in vm.current.answers"></select> -->
+  <select ng-show="vm.current.answers.length > 0" ng-model="vm.current.answer" ng-options="a.text for a in vm.current.answers"></select>
+</label>
+</div>
+
+<button ng-click="vm.addQuestion()">Add Question</button>
+
+</section>

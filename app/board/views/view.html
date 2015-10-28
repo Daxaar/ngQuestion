@@ -1,0 +1,9 @@
+Total Questions : {{board.questions.length}}
+<table>
+  <tr ng-repeat="q in board.questions" ng-show="q.visible()">
+    <td>{{q.text}}</td>
+    <td>
+      <select ng-model="q.answer" ng-options="a.id as a.text for a in q.answers"></select>
+    </td>
+  </tr>
+</table>
