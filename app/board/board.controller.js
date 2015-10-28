@@ -9,40 +9,47 @@
   function BoardController(boardService) {
 
     var vm = this;
+    vm.current = new Question();
+    vm.questions = [];
 
-    this.title = 'Create a Board';
-    this.name = "";
-    this.createdBy = "todo: read auth user";
-
-    this.addQuestion = function(){
-      this.questions.push(this.current);
-      this.current = this.createQuestion();
+    return {
+      title : vm.title,
+      name : vm.name,
+      current : vm.current,
+      questions : vm.questions,
+      addQuestion : addQuestion,
+      addAnswer : addAnswer,
+      removeAnswer: removeAnswer,
+      createBoard : createBoard,
+      createQuestion : createQuestion,
     };
 
-    this.addAnswer = function(){
-      this.current.answers.push({
-        id: this.current.answers.length+1,
-        text: this.current.answer.text
+    function addQuestion(){
+      vm.questions.push(vm.current);
+      vm.current = createQuestion();
+    }
+
+    function addAnswer(){
+      vm.current.answers.push({
+        id: vm.current.answers.length + 1,
+        text: vm.current.answer.text
       });
-      this.current.answer = null;
-    };
-    this.current = this.current || new Question();
+      vm.current.answer = null;
+    }
 
-    this.removeAnswer = function(answer){
-      this.current.answers = this.current.answers.filter(function (e) {
+    function removeAnswer(answer){
+      vm.current.answers = vm.current.answers.filter(function (e) {
         return e.id !== answer.id;
       });
-    };
+    }
 
-    this.questions = [];
-
-    this.createQuestion = function(){
+    function createQuestion(){
       return new Question();
-    };
+    }
 
-    this.createBoard = function(){
-      boardService.create(this.name,this.questions);
-    };
+    function createBoard(){
+      boardService.create(vm.name,vm.questions);
+    }
   }
 
   function Question(){
