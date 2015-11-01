@@ -5,11 +5,24 @@
     .service('BoardService', function ($http) {
       var vm = this;
 
-      vm.getAll = function(){
-        return sampleQuestions;
+      return {
+        getAll : getAll,
+        getById : getById,
+        save : save
       };
 
-      vm.getById = function(id){
+      function save(board){
+        var boards = JSON.parse(localStorage.getItem('boards') || '{}');
+        boards[board.name] = board;
+        localStorage.setItem('boards',JSON.stringify(boards));
+      }
+
+      function getAll(){
+        return JSON.parse(localStorage.getItem('boards') || '{}');
+      }
+
+      function getById(id){
+        //var boards = localStorage.getObject('boards') || {};
         var result = sampleQuestions.filter(function (question) {
           return question.id === id;
         });
@@ -18,7 +31,17 @@
           throw "Duplicate question id exists";
         }
         return result[0];
+      }
+
+      Storage.prototype.setObject = function(key, value) {
+        this.setItem(key, JSON.stringify(value));
       };
+
+      Storage.prototype.getObject = function(key) {
+          var value = this.getItem(key);
+          return value && JSON.parse(value);
+      };
+
     });
 
     var sampleQuestions = [{

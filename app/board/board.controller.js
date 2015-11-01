@@ -9,7 +9,7 @@
   function BoardController(boardService) {
 
     var vm = this;
-    vm.current = new Question();
+    vm.current = vm.current || new Question();
     vm.questions = [];
 
     return {
@@ -49,6 +49,14 @@
 
     function createBoard(){
       boardService.create(vm.name,vm.questions);
+    }
+
+    function save(){
+      boardService.save({name:vm.name,questions:vm.questions});
+    }
+
+    function list(){
+      return boardService.getAll();
     }
   }
 

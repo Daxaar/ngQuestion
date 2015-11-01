@@ -30,9 +30,7 @@
 
 <label for="">
   Answer:
-  <input ng-value="vm.current.answer.id" ng-model="vm.current.answer.text"/><button ng-click="vm.addAnswer()">Add</button>
-  <!-- <select ng-options="a.id as a.text for a in vm.current.answers"></select> -->
-  <!-- <select ng-show="vm.current.answers.length > 0" ng-model="vm.current.answer" ng-options="a.text for a in vm.current.answers"></select> -->
+  <input ng-value="vm.current.answer.id" ng-model="vm.current.answer.text"/><button ng-disabled="vm.current.answer.text === null" ng-click="vm.addAnswer()">Add</button>
   <ul>
     <li ng-repeat="answer in vm.current.answers">
       {{answer.text}} |
@@ -44,5 +42,5 @@
 </div>
 
 <button ng-click="vm.addQuestion()">Add Question</button>
-
+<button type="button" name="button" ng-click="vm.save()">Save</button>
 </section>

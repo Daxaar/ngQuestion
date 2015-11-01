@@ -35,5 +35,4 @@ describe('BoardController', function(){
     boardController.addQuestion(question);
     expect(boardController.current.text).toEqual(null);
   });
-
 });
