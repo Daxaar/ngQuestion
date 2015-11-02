@@ -1,11 +1,7 @@
 <section ng-controller="BoardController as vm">
 <h2>{{vm.title}}</h2>
 
-<div>
-<label for="name">Board Name:
-  <input ng-model="vm.name" type="textbox"/>
-</label>
-</div>
+<div><label for="name">Board Name:<input ng-model="vm.name" type="textbox"/></label></div>
 
 <div id="existingQuestions">
   Existing Questions on Board
@@ -18,29 +14,25 @@
 
 <div id="questionPanel">
 <h4>Create a question</h4>
-<label for="">
-  Text:
-  <input ng-model="vm.current.text"/>
-</label>
+<label for="">Text:<input ng-model="vm.current.text"/></label>
 
-<label for="">
-  Order:
-  <input ng-model="vm.current.order" ng-value="{{vm.questions.length+1}}"/>
-</label>
+<label for="">Order:<input ng-model="vm.current.order" ng-value="{{vm.questions.length+1}}"/></label>
 
-<label for="">
-  Answer:
+<label for="">Answer:
   <input ng-value="vm.current.answer.id" ng-model="vm.current.answer.text"/><button ng-disabled="vm.current.answer.text === null" ng-click="vm.addAnswer()">Add</button>
   <ul>
     <li ng-repeat="answer in vm.current.answers">
       {{answer.text}} |
       <a ng-show="vm.current.answers.length > 0" ng-click="vm.removeAnswer(answer)" href="">Remove</a>
     </li>
-
   </ul>
 </label>
 </div>
 
 <button ng-click="vm.addQuestion()">Add Question</button>
-<button type="button" name="button" ng-click="vm.save()">Save</button>
+<button ng-click="vm.save()">Save</button>
+</section>
+
+<section>
+  <a ui-sref="list">List All Boards</a>
 </section>

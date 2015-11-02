@@ -11,6 +11,10 @@
       url: "/boards/create",
       templateUrl: 'app/board/views/create.html'
     })
+    .state('edit', {
+      url: "/boards/create/:boardId",
+      templateUrl: 'app/board/views/create.html'
+    })
     .state('view',{
       url: "/boards/view",
       templateUrl: 'app/board/views/view.html'

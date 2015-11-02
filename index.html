@@ -6,28 +6,13 @@
 	<title>Angular Questions</title>
 	<link href="app/styles/style.css" rel="stylesheet" type="text/css">
 </head>
-
 <body ng-app="MyApp">
-
-
-		<div ui-view></div>
-<br/>
-<!-- <div ng-controller="BoardController as board">
-	{{board}}
-		<div style="font-family:Menlo;font-size:0.8em" ng-repeat="q in board.questions">
-			<div>
-				{{q}}
-			</div>
-		</div>
-</div> -->
-
+	<div ui-view></div>
 	<script lang="javascript" src="bower_components/angular/angular.js"></script>
 	<script lang="javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 	<script src="app.js"></script>
 	<script src="app/board/board.service.js"></script>
 	<script src="app/board/board.controller.js"></script>
 	<script src="bower_components/underscore/underscore.js"></script>
-
 </body>
-
 </html>

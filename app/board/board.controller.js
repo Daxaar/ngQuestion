@@ -11,18 +11,15 @@
     var vm = this;
     vm.current = vm.current || new Question();
     vm.questions = [];
-
-    return {
-      title : vm.title,
-      name : vm.name,
-      current : vm.current,
-      questions : vm.questions,
-      addQuestion : addQuestion,
-      addAnswer : addAnswer,
-      removeAnswer: removeAnswer,
-      createBoard : createBoard,
-      createQuestion : createQuestion,
-    };
+    vm.name = '';
+    vm.title = '';
+    vm.addQuestion = addQuestion,
+    vm.addAnswer = addAnswer,
+    vm.removeAnswer = removeAnswer,
+    vm.createBoard = createBoard,
+    vm.createQuestion = createQuestion,
+    vm.save = save
+    vm.list = list;
 
     function addQuestion(){
       vm.questions.push(vm.current);
@@ -52,11 +49,15 @@
     }
 
     function save(){
+      //TODO: Validate board
+      console.log('saving');
       boardService.save({name:vm.name,questions:vm.questions});
     }
 
     function list(){
-      return boardService.getAll();
+      var boards = boardService.getAll();
+      console.log(boards);
+      return boards;
     }
   }
 

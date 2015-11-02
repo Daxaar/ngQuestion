@@ -10,8 +10,6 @@ describe('BoardService', function(){
   beforeEach(inject(function (BoardService) {
       service = BoardService;
       localStorage.clear();
-      spyOn(localStorage,'setItem');
-      spyOn(localStorage,'getItem').and.returnValue(JSON.stringify(boards));
   }));
 
   it('has a getAll fn',function () {
@@ -25,23 +23,32 @@ describe('BoardService', function(){
   it('has a save fn',function () {
     expect(service.save).toBeDefined();
   });
-  
+
   it('save: saves the board to localStorage',function () {
-    var board = {name:"Test Board Name",questions: null};
-    service.save(board);
+    spyOn(localStorage,'setItem');
+    service.save({name:"Test Board Name",questions: null});
     expect(localStorage.setItem).toHaveBeenCalled();
   });
 
   it('getAll: reads all boards from localStorage',function () {
+    spyOn(localStorage,'getItem').and.returnValue(JSON.stringify(boards));
     var actual = service.getAll();
     expect(actual).toEqual(boards);
   });
 
   it('getAll: returns an array of boards',function () {
+    spyOn(localStorage,'getItem').and.returnValue(JSON.stringify(boards));
     var actual = service.getAll();
     expect(actual instanceof Array).toBe(true);
   });
 
+  it('sets the id of a new board based on the length of the array',function () {
+    var board = {name:"test board"};
+    service.save(board);
+    var boards = service.getAll();
+    expect(boards.length).toBe(1);
+    expect(boards[boards.length-1].id).toBe(1);
+  })
   function createQuestions(number){
     var questions = [];
     var question;

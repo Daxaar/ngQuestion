@@ -12,17 +12,17 @@
       };
 
       function save(board){
-        var boards = JSON.parse(localStorage.getItem('boards') || '{}');
-        boards[board.name] = board;
+        var boards = JSON.parse(localStorage.getItem('boards') || '[]');
+        board.id = boards.length + 1;
+        boards.push(board);
         localStorage.setItem('boards',JSON.stringify(boards));
       }
 
       function getAll(){
-        return JSON.parse(localStorage.getItem('boards') || '{}');
+        return JSON.parse(localStorage.getItem('boards') || '[]');
       }
 
       function getById(id){
-        //var boards = localStorage.getObject('boards') || {};
         var result = sampleQuestions.filter(function (question) {
           return question.id === id;
         });

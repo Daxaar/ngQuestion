@@ -10,9 +10,9 @@ h2{
 
 #existingQuestions{
     background-color: grey;
-    float:left;
+    /*float:left;*/
 }
 
 #questionPanel{
-  background-color: gainsboro; 
+  background-color: gainsboro;
 }
