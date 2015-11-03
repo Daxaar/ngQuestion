@@ -23,9 +23,8 @@
       }
 
       function getById(id){
-        debugger;
         return getAll().filter(function (question) {
-          return question.id === id;
+          return question.id == id;
         });
       }
 

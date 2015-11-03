@@ -29,6 +29,12 @@ describe('BoardController', function(){
     expect(boardController.questions.length).toBe(1);
   });
 
+  it('addQuestion: adds the question to the current board',function () {
+    boardController.currentBoard = {id:1,questions:[]};
+    boardController.addQuestion({id:1,questions:[]});
+    expect(boardController.currentBoard.questions.length).toEqual(1);
+  });
+
   it('resets the current question property when a new question is added',function () {
     var question = boardController.createQuestion();
     question.text = "A Question";

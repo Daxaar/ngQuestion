@@ -11,32 +11,34 @@
     var vm = this;
     vm.current = vm.current || new Question();
     vm.questions = [];
+    vm.boardList = [];
+    vm.selectedBoard = undefined;
     vm.name = '';
     vm.title = '';
-    vm.addQuestion = addQuestion,
-    vm.addAnswer = addAnswer,
-    vm.removeAnswer = removeAnswer,
-    vm.createBoard = createBoard,
-    vm.createQuestion = createQuestion,
-    vm.save = save
+    vm.addQuestion = addQuestion;
+    vm.addAnswer = addAnswer;
+    vm.removeAnswer = removeAnswer;
+    vm.createBoard = createBoard;
+    vm.createQuestion = createQuestion;
+    vm.save = save;
     vm.list = list;
 
     activate();
 
     function activate(){
-      debugger;
       var board, id = $stateParams.boardId;
       if(id){
         board = boardService.getById(id);
-      }
-
-      if(board && board.length > 0){
-        vm.name = board[0].name;
-        vm.questions = board[0].questions;
+        if(board && board.length > 0){
+          vm.selectedBoard = board;
+        }
+      } else {
+        vm.boardList = list();
       }
     }
 
     function addQuestion(){
+      vm.currentBoard.questions.push(vm.current);
       vm.questions.push(vm.current);
       vm.current = createQuestion();
     }

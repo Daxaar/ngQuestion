@@ -1,7 +1,7 @@
 <h2>List</h2>
 
 <div ng-controller="BoardController as vm">
-  <div ng-repeat="board in vm.list()">
+  <div ng-repeat="board in vm.boardList">
     <a ui-sref="edit({boardId:board.id})">{{board.name}}</a>
   </div>
 </div>
