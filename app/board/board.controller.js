@@ -4,9 +4,9 @@
   angular.module("MyApp")
     .controller("BoardController", BoardController);
 
-  BoardController.$inject = ['BoardService'];
+  BoardController.$inject = ['BoardService','$stateParams'];
 
-  function BoardController(boardService) {
+  function BoardController(boardService, $stateParams) {
 
     var vm = this;
     vm.current = vm.current || new Question();
@@ -20,6 +20,21 @@
     vm.createQuestion = createQuestion,
     vm.save = save
     vm.list = list;
+
+    activate();
+
+    function activate(){
+      debugger;
+      var board, id = $stateParams.boardId;
+      if(id){
+        board = boardService.getById(id);
+      }
+
+      if(board && board.length > 0){
+        vm.name = board[0].name;
+        vm.questions = board[0].questions;
+      }
+    }
 
     function addQuestion(){
       vm.questions.push(vm.current);
@@ -56,7 +71,7 @@
 
     function list(){
       var boards = boardService.getAll();
-      console.log(boards);
+      //console.log(boards);
       return boards;
     }
   }

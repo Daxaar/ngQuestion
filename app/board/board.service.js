@@ -23,14 +23,10 @@
       }
 
       function getById(id){
-        var result = sampleQuestions.filter(function (question) {
+        debugger;
+        return getAll().filter(function (question) {
           return question.id === id;
         });
-
-        if(result.length > 1){
-          throw "Duplicate question id exists";
-        }
-        return result[0];
       }
 
       Storage.prototype.setObject = function(key, value) {
