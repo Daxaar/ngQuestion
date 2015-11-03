@@ -23,10 +23,10 @@ describe('BoardController', function(){
   });
 
   it('can add a question',function () {
-
     var emptyQuestion = boardController.createQuestion();
     boardController.addQuestion(emptyQuestion);
     expect(boardController.questions.length).toBe(1);
+    expect(boardController.currentBoard.questions.length).toBe(1);
   });
 
   it('addQuestion: adds the question to the current board',function () {

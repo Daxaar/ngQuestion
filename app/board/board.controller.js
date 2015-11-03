@@ -12,7 +12,7 @@
     vm.current = vm.current || new Question();
     vm.questions = [];
     vm.boardList = [];
-    vm.selectedBoard = undefined;
+    vm.currentBoard = vm.currentBoard || new Board();
     vm.name = '';
     vm.title = '';
     vm.addQuestion = addQuestion;
@@ -78,6 +78,11 @@
     }
   }
 
+  function Board(){
+    this.id = null;
+    this.questions = [];
+    this.name = null;
+  }
   function Question(){
     this.id = null;
     this.text = null;
