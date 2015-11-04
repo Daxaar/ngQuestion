@@ -9,12 +9,9 @@
   function BoardController(boardService, $stateParams) {
 
     var vm = this;
-    vm.current = vm.current || new Question();
-    vm.questions = [];
+    vm.currentQuestion = vm.currentQuestion || new Question();
     vm.boardList = [];
     vm.currentBoard = vm.currentBoard || new Board();
-    vm.name = '';
-    vm.title = '';
     vm.addQuestion = addQuestion;
     vm.addAnswer = addAnswer;
     vm.removeAnswer = removeAnswer;
@@ -30,29 +27,29 @@
       if(id){
         board = boardService.getById(id);
         if(board && board.length > 0){
-          vm.selectedBoard = board;
+          vm.currentBoard = board[0];
         }
       } else {
         vm.boardList = list();
       }
     }
 
-    function addQuestion(){
-      vm.currentBoard.questions.push(vm.current);
-      vm.questions.push(vm.current);
-      vm.current = createQuestion();
+    function addQuestion() {
+      vm.currentQuestion.id = vm.currentBoard.questions.length + 1;
+      vm.currentBoard.questions.push(vm.currentQuestion);
+      vm.currentQuestion = createQuestion();
     }
 
     function addAnswer(){
-      vm.current.answers.push({
-        id: vm.current.answers.length + 1,
-        text: vm.current.answer.text
+      vm.currentQuestion.answers.push({
+        id: vm.currentQuestion.answers.length + 1,
+        text: vm.currentQuestion.answer.text
       });
-      vm.current.answer = null;
+      vm.currentQuestion.answer = null;
     }
 
     function removeAnswer(answer){
-      vm.current.answers = vm.current.answers.filter(function (e) {
+      vm.currentQuestion.answers = vm.currentQuestion.answers.filter(function (e) {
         return e.id !== answer.id;
       });
     }
@@ -62,19 +59,15 @@
     }
 
     function createBoard(){
-      boardService.create(vm.name,vm.questions);
+      boardService.create(vm.currentBoard);
     }
 
     function save(){
-      //TODO: Validate board
-      console.log('saving');
-      boardService.save({name:vm.name,questions:vm.questions});
+      boardService.save(vm.currentBoard);
     }
 
     function list(){
-      var boards = boardService.getAll();
-      //console.log(boards);
-      return boards;
+      return boardService.getAll();
     }
   }
 
@@ -83,6 +76,7 @@
     this.questions = [];
     this.name = null;
   }
+  
   function Question(){
     this.id = null;
     this.text = null;

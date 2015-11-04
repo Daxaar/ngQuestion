@@ -8,6 +8,12 @@
 </head>
 <body ng-app="MyApp">
 	<div ui-view></div>
+
+	<div id="storage">
+		<script lang="javascript">
+			document.getElementById('storage').innerHTML = localStorage.getItem('boards');
+		</script>
+	</div>
 	<script lang="javascript" src="bower_components/angular/angular.js"></script>
 	<script lang="javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 	<script src="app.js"></script>

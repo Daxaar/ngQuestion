@@ -13,19 +13,19 @@ describe('BoardController', function(){
   });
 
   it('has questions property defined', function () {
-    expect(boardController.questions).toBeDefined();
+    expect(boardController.currentBoard).toBeDefined();
+    //expect(boardController.currentBoard.questions).toBeDefined();
   });
 
   it('can remove an answer from a questions list of answers',function () {
-    boardController.current.answers = [{id:1,text:"an answer"}];
+    boardController.currentQuestion.answers = [{id:1,text:"an answer"}];
     boardController.removeAnswer({id:1,text:"an answer"});
-    expect(boardController.current.answers.length).toBe(0);
+    expect(boardController.currentQuestion.answers.length).toBe(0);
   });
 
   it('can add a question',function () {
     var emptyQuestion = boardController.createQuestion();
     boardController.addQuestion(emptyQuestion);
-    expect(boardController.questions.length).toBe(1);
     expect(boardController.currentBoard.questions.length).toBe(1);
   });
 
@@ -39,7 +39,7 @@ describe('BoardController', function(){
     var question = boardController.createQuestion();
     question.text = "A Question";
     boardController.addQuestion(question);
-    expect(boardController.current.text).toEqual(null);
+    expect(boardController.currentQuestion.text).toEqual(null);
   });
 
 });

@@ -1,29 +1,32 @@
 <section ng-controller="BoardController as vm">
 <h2>{{vm.title}}</h2>
 
-<div><label for="name">Board Name:<input ng-model="vm.name" type="textbox"/></label></div>
+<div><label for="name">Board Name:<input ng-model="vm.currentBoard.name" type="textbox"/></label></div>
 
 <div id="existingQuestions">
   Existing Questions on Board
   <ul>
-  <li ng-repeat="q in vm.questions">
-    {{q.text}}
+  <li ng-repeat="q in vm.currentBoard.questions">
+    {{q.text}} - {{q.answers.length}}
+    <ul>
+      <li ng-repeat="a in q.answers">{{a.text}}</li>
+    </ul>
   </li>
   </ul>
 </div>
 
 <div id="questionPanel">
 <h4>Create a question</h4>
-<label for="">Text:<input ng-model="vm.current.text"/></label>
+<label for="">Text:<input ng-model="vm.currentQuestion.text"/></label>
 
-<label for="">Order:<input ng-model="vm.current.order" ng-value="{{vm.questions.length+1}}"/></label>
+<label for="">Order:<input ng-model="vm.currentQuestion.order" ng-value="{{vm.currentBoard.questions.length+1}}"/></label>
 
 <label for="">Answer:
-  <input ng-value="vm.current.answer.id" ng-model="vm.current.answer.text"/><button ng-disabled="vm.current.answer.text === null" ng-click="vm.addAnswer()">Add</button>
+  <input ng-value="vm.currentQuestion.answer.id" ng-model="vm.currentQuestion.answer.text"/><button ng-disabled="vm.currentQuestion.answer.text === null" ng-click="vm.addAnswer()">Add</button>
   <ul>
-    <li ng-repeat="answer in vm.current.answers">
+    <li ng-repeat="answer in vm.currentQuestion.answers">
       {{answer.text}} |
-      <a ng-show="vm.current.answers.length > 0" ng-click="vm.removeAnswer(answer)" href="">Remove</a>
+      <a ng-show="vm.currentQuestion.answers.length > 0" ng-click="vm.removeAnswer(answer)" href="">Remove</a>
     </li>
   </ul>
 </label>

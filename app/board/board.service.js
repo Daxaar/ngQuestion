@@ -15,7 +15,7 @@
         var boards = JSON.parse(localStorage.getItem('boards') || '[]');
         board.id = boards.length + 1;
         boards.push(board);
-        localStorage.setItem('boards',JSON.stringify(boards));
+        localStorage.setItem('boards',angular.toJson(boards));
       }
 
       function getAll(){
@@ -27,16 +27,6 @@
           return question.id == id;
         });
       }
-
-      Storage.prototype.setObject = function(key, value) {
-        this.setItem(key, JSON.stringify(value));
-      };
-
-      Storage.prototype.getObject = function(key) {
-          var value = this.getItem(key);
-          return value && JSON.parse(value);
-      };
-
     });
 
     var sampleQuestions = [{
