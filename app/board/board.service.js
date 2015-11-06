@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('myapp.boards',[])
+  angular.module('MyApp')
     .service('BoardService', function ($http) {
       var vm = this;
 

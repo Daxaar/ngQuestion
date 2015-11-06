@@ -5,7 +5,7 @@ describe('BoardService', function(){
       storage,
       boards = [{id : 1,name : "Test Board",questions : null}];
 
-  beforeEach(module('myapp.boards'));
+  beforeEach(module('MyApp'));
 
   beforeEach(inject(function (BoardService) {
       service = BoardService;

@@ -2,15 +2,12 @@
 
   'use strict';
 
-  angular.module("MyApp",['myapp.boards','ui.router'])
+  //angular.module("MyApp",['ui.router','ngMessages'])
+  angular.module("MyApp",['ui.router','ngMessages'])
     .config(['$stateProvider',configure]);
 
   function configure($stateProvider) {
     $stateProvider
-    // .state('home', {
-    //   url: '/',
-    //   templateUrl: 'app/board/views/list.html'
-    // })
     .state('create', {
       url: "/boards/create",
       templateUrl: 'app/board/views/create.html'
