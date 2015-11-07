@@ -43,10 +43,7 @@ describe('BoardController', function(){
   });
 
   it('questionIsValid: returns true when all question fields are supplied',function () {
-    var validQuestion = boardController.createQuestion();
-    validQuestion.text = "A Value";
-    validQuestion.order = 1;
-    validQuestion.answer = "An Answer";
+    var validQuestion = {text : "q",order : 1,answer : "a",answers : []};
     boardController.currentQuestion = validQuestion;
     expect(boardController.isQuestionValid()).toBe(true);
   });

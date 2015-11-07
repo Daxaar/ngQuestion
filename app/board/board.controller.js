@@ -70,7 +70,6 @@
     }
 
     function save(){
-      debugger;
       boardService.save(vm.currentBoard);
     }
 
