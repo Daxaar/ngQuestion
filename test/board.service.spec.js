@@ -20,14 +20,31 @@ describe('BoardService', function(){
     expect(service.getById).toBeDefined();
   });
 
-  it('has a save fn',function () {
-    expect(service.save).toBeDefined();
-  });
+  describe('save function',function () {
+    it('is defined',function () {
+      expect(service.save).toBeDefined();
+    });
 
-  it('save: saves the board to localStorage',function () {
-    spyOn(localStorage,'setItem');
-    service.save({name:"Test Board Name",questions: null});
-    expect(localStorage.setItem).toHaveBeenCalled();
+    it('saves the board to localStorage',function () {
+      spyOn(localStorage,'setItem');
+      service.save({name:"Test Board Name",questions: null});
+      expect(localStorage.setItem).toHaveBeenCalled();
+    });
+
+    it('updates a board when it already has an id',function () {
+      var board = {name:"test board",id:1234567890};
+      service.save(board);
+      expect(service.getAll().length).toBe(1);
+      service.save(board);
+      expect(service.getAll().length).toBe(1);
+    });
+
+    it("saves the board as a new record when it doesn't already exist in store",function () {
+      var board = {name:"test board",id:1234567890};
+      expect(service.getAll().length).toBe(0);
+      service.save(board);
+      expect(service.getAll().length).toBe(1);
+    });
   });
 
   it('getAll: reads all boards from localStorage',function () {
@@ -48,7 +65,10 @@ describe('BoardService', function(){
     var boards = service.getAll();
     expect(boards.length).toBe(1);
     expect(boards[boards.length-1].id).toBe(1);
-  })
+  });
+
+
+
   function createQuestions(number){
     var questions = [];
     var question;
@@ -61,5 +81,4 @@ describe('BoardService', function(){
     }
     return questions;
   }
-
 });

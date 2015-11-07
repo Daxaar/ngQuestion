@@ -13,8 +13,22 @@
 
       function save(board){
         var boards = JSON.parse(localStorage.getItem('boards') || '[]');
-        board.id = boards.length + 1;
-        boards.push(board);
+
+        var existingBoardId;
+        
+        for (var i = 0; i < boards.length; i++) {
+          if(boards[i].id === board.id){
+            existingBoardId = i;
+            return;
+          }
+        }
+
+        if(existingBoardId) {
+          boards[existingBoardId] = board;
+        } else {
+          board.id = boards.length + 1;
+          boards.push(board);
+        }
         localStorage.setItem('boards',angular.toJson(boards));
       }
 
