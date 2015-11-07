@@ -12,10 +12,6 @@ describe('BoardService', function(){
       localStorage.clear();
   }));
 
-  it('has a getAll fn',function () {
-    expect(service.getAll).toBeDefined();
-  });
-
   it('has a getById fn',function () {
     expect(service.getById).toBeDefined();
   });
@@ -45,29 +41,34 @@ describe('BoardService', function(){
       service.save(board);
       expect(service.getAll().length).toBe(1);
     });
+
+    it('sets the id of a new board based on the length of the array',function () {
+      var board = {name:"test board"};
+      service.save(board);
+      var boards = service.getAll();
+      expect(boards.length).toBe(1);
+      expect(boards[boards.length-1].id).toBe(1);
+    });
+
   });
 
-  it('getAll: reads all boards from localStorage',function () {
-    spyOn(localStorage,'getItem').and.returnValue(JSON.stringify(boards));
-    var actual = service.getAll();
-    expect(actual).toEqual(boards);
+  describe('getAll function',function () {
+    it('is defined',function () {
+      expect(service.getAll).toBeDefined();
+    });
+
+    it('reads all boards from localStorage',function () {
+      spyOn(localStorage,'getItem').and.returnValue(JSON.stringify(boards));
+      var actual = service.getAll();
+      expect(actual).toEqual(boards);
+    });
+
+    it('returns an array of boards',function () {
+      spyOn(localStorage,'getItem').and.returnValue(JSON.stringify(boards));
+      var actual = service.getAll();
+      expect(actual instanceof Array).toBe(true);
+    });
   });
-
-  it('getAll: returns an array of boards',function () {
-    spyOn(localStorage,'getItem').and.returnValue(JSON.stringify(boards));
-    var actual = service.getAll();
-    expect(actual instanceof Array).toBe(true);
-  });
-
-  it('sets the id of a new board based on the length of the array',function () {
-    var board = {name:"test board"};
-    service.save(board);
-    var boards = service.getAll();
-    expect(boards.length).toBe(1);
-    expect(boards[boards.length-1].id).toBe(1);
-  });
-
-
 
   function createQuestions(number){
     var questions = [];
