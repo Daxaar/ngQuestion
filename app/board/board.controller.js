@@ -40,7 +40,10 @@
       vm.currentQuestion = createQuestion();
     }
 
-    function addAnswer(){
+    function addAnswer($keyPress){
+      if($keyPress.which !== 13){
+        return;
+      }
       vm.currentQuestion.answers.push({
         id: vm.currentQuestion.answers.length + 1,
         text: vm.currentQuestion.answer.text

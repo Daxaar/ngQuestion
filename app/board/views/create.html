@@ -27,19 +27,22 @@
 
 <div id="questionPanel">
 <h4>Create a question</h4>
-<label for="">Text:<input ng-model="vm.currentQuestion.text"/></label>
 
-<label for="">Order:<input ng-model="vm.currentQuestion.order" ng-value="{{vm.currentBoard.questions.length+1}}"/></label>
+<label for="text">Text</label>
+<input name="text" ng-model="vm.currentQuestion.text"/>
 
-<label for="">Answer:
-  <input ng-value="vm.currentQuestion.answer.id" ng-model="vm.currentQuestion.answer.text"/><button ng-disabled="vm.currentQuestion.answer.text === null" ng-click="vm.addAnswer()">Add</button>
+<label for="order">Order</label>
+<input ng-model="vm.currentQuestion.order" ng-value="{{vm.currentBoard.questions.length+1}}"/>
+
+<label for="answer">Answer</label>
+  <input ng-value="vm.currentQuestion.answer.id" ng-model="vm.currentQuestion.answer.text" ng-keypress="vm.addAnswer($event)"/>
+  <button ng-disabled="vm.currentQuestion.answer.text === null" ng-click="vm.addAnswer()">Add</button>
   <ul>
     <li ng-repeat="answer in vm.currentQuestion.answers">
       {{answer.text}} |
       <a ng-show="vm.currentQuestion.answers.length > 0" ng-click="vm.removeAnswer(answer)" href="">Remove</a>
     </li>
   </ul>
-</label>
 </div>
 
 <button ng-click="vm.addQuestion()">Add Question</button>
