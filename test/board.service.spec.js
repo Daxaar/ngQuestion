@@ -47,7 +47,7 @@ describe('BoardService', function(){
       service.save(board);
       var boards = service.getAll();
       expect(boards.length).toBe(1);
-      expect(boards[boards.length-1].id).toBe(1);
+      expect(boards[boards.length-1].id).toBe(11111);
     });
 
   });
