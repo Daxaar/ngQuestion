@@ -19,6 +19,7 @@
     vm.createQuestion = createQuestion;
     vm.save = save;
     vm.list = list;
+    vm.isQuestionValid = isQuestionValid;
 
     activate();
 
@@ -40,10 +41,13 @@
       vm.currentQuestion = createQuestion();
     }
 
-    function addAnswer($keyPress){
-      if($keyPress.which !== 13){
+    function addAnswer ( $keyPress ) {
+      if($keyPress && $keyPress.which === 13) {
+        $keyPress.stopImmediatePropagation();
+      } else {
         return;
       }
+
       vm.currentQuestion.answers.push({
         id: vm.currentQuestion.answers.length + 1,
         text: vm.currentQuestion.answer.text
@@ -66,11 +70,17 @@
     }
 
     function save(){
+      debugger;
       boardService.save(vm.currentBoard);
     }
 
     function list(){
       return boardService.getAll();
+    }
+
+    function isQuestionValid(){
+      var q = vm.currentQuestion;
+      return q.text != null && q.order != null && (q.answers.length > 0 || q.answer != null);
     }
   }
 
@@ -79,7 +89,7 @@
     this.questions = [];
     this.name = null;
   }
-  
+
   function Question(){
     this.id = null;
     this.text = null;

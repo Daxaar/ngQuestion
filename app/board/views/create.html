@@ -1,5 +1,5 @@
 <section ng-controller="BoardController as vm">
-<form name="boardForm" ng-submit="vm.save()">
+<!-- <form name="boardForm"> -->
 <h2>{{vm.title}}</h2>
 
 <div>
@@ -32,7 +32,7 @@
 <input name="text" ng-model="vm.currentQuestion.text"/>
 
 <label for="order">Order</label>
-<input ng-model="vm.currentQuestion.order" ng-value="{{vm.currentBoard.questions.length+1}}"/>
+<input ng-model="vm.currentQuestion.order"/>
 
 <label for="answer">Answer</label>
   <input ng-value="vm.currentQuestion.answer.id" ng-model="vm.currentQuestion.answer.text" ng-keypress="vm.addAnswer($event)"/>
@@ -45,12 +45,11 @@
   </ul>
 </div>
 
-<button ng-click="vm.addQuestion()">Add Question</button>
-<!-- <button ng-click="vm.save()">Save</button> -->
-<button type="submit" name="button">Save</button>
+<button ng-click="vm.addQuestion()" ng-disabled="!vm.isQuestionValid()">Add Question</button>
+<button ng-click="vm.save()" name="button">Save</button>
 </section>
 
 <section>
   <a ui-sref="list">List All Boards</a>
 </section>
-</form>
+<!-- </form> -->
