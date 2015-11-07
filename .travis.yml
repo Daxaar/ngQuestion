@@ -13,7 +13,6 @@ before_install:
 
 script:
   - npm install
-  - karma start
 
 cache:
   directories:

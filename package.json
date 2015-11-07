@@ -4,7 +4,7 @@
   "description": "Angular application created from scratch.  No generators or templates.",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test" : "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
     "start": "live-server .",
     "postinstall": "bower install"
   },
