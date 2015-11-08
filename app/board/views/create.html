@@ -1,5 +1,4 @@
 <section ng-controller="BoardController as vm">
-<!-- <form name="boardForm"> -->
 <h2>{{vm.title}}</h2>
 
 <div>
@@ -17,7 +16,7 @@
   Existing Questions on Board
   <ul>
   <li ng-repeat="q in vm.currentBoard.questions">
-    {{q.text}} - {{q.answers.length}}
+    <span ng-click="vm.currentQuestion = q">{{q.text}}</span>
     <ul>
       <li ng-repeat="a in q.answers">{{a.text}}</li>
     </ul>
@@ -26,13 +25,14 @@
 </div>
 
 <div id="questionPanel">
-<h4>Create a question</h4>
+<h4 ng-show="vm.currentQuestion.id === null">Create a question</h4>
+<h4 ng-show="vm.currentQuestion.id !== null">Editing question {{vm.currentQuestion.id}}</h4>
 
 <label for="text">Text</label>
 <input name="text" ng-model="vm.currentQuestion.text"/>
 
 <label for="order">Order</label>
-<input ng-model="vm.currentQuestion.order"/>
+<input name="order" ng-model="vm.currentQuestion.order"/>
 
 <label for="answer">Answer</label>
   <input ng-value="vm.currentQuestion.answer.id" ng-model="vm.currentQuestion.answer.text" ng-keypress="vm.addAnswer($event)"/>
@@ -43,13 +43,14 @@
       <a ng-show="vm.currentQuestion.answers.length > 0" ng-click="vm.removeAnswer(answer)" href="">Remove</a>
     </li>
   </ul>
+  <button ng-show="!vm.isEditMode()" ng-click="vm.addQuestion()" ng-disabled="!vm.isQuestionValid()">Add Question</button>
+  <button ng-show="vm.isEditMode()" ng-click="vm.resetQuestion()">Cancel Question Edit</button>
+
 </div>
 
-<button ng-click="vm.addQuestion()" ng-disabled="!vm.isQuestionValid()">Add Question</button>
 <button ng-click="vm.save()" name="button">Save</button>
 </section>
 
 <section>
   <a ui-sref="list">List All Boards</a>
 </section>
-<!-- </form> -->

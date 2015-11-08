@@ -14,7 +14,7 @@
       function save(board){
         var boards = JSON.parse(localStorage.getItem('boards') || '[]');
 
-        var existingBoardId = null;
+        var existingBoardId;
 
         for (var i = 0; i < boards.length; i++) {
           if(boards[i].id === board.id){
@@ -23,7 +23,7 @@
           }
         }
 
-        if(existingBoardId !== null) {
+        if(existingBoardId !== undefined) {
           boards[existingBoardId] = board;
         } else {
           board.id = boards.length + 1;

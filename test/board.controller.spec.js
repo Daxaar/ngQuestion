@@ -42,10 +42,26 @@ describe('BoardController', function(){
     expect(boardController.currentQuestion.text).toEqual(null);
   });
 
-  it('questionIsValid: returns true when all question fields are supplied',function () {
-    var validQuestion = {text : "q",order : 1,answer : "a",answers : []};
-    boardController.currentQuestion = validQuestion;
-    expect(boardController.isQuestionValid()).toBe(true);
+  describe('isQuestionValid function',function () {
+    it('is defined',function () {
+      expect(boardController.isQuestionValid).toBeDefined();
+    });
+
+    it('returns true when all question fields are supplied',function () {
+      var validQuestion = {id: null, text : "q",order : 1,answer : "a",answers : []};
+      boardController.currentQuestion = validQuestion;
+      expect(boardController.isQuestionValid()).toBe(true);
+    });
+
+    it('returns false when id is not null (edit)',function () {
+      var question = {id: 1, text : "q",order : 1,answer : "a",answers : []};
+      boardController.currentQuestion = question;
+      expect(boardController.isQuestionValid()).toBe(false);
+    });
   });
 
+  // it('saves the order on the currentQuestion property',function () {
+  //   boardController.currentQuestion = boardController.createQuestion();
+  //   expect(boardController.currentQuestion.order).not.toBe(null);
+  // });
 });

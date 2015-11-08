@@ -20,7 +20,9 @@
     vm.save = save;
     vm.list = list;
     vm.isQuestionValid = isQuestionValid;
-
+    vm.resetQuestion = resetQuestion;
+    vm.isEditMode = isEditMode;
+    //vm.isEditMode = vm.currentQuestion.id !== null;
     activate();
 
     function activate(){
@@ -33,6 +35,15 @@
       } else {
         vm.boardList = list();
       }
+    }
+
+    function isEditMode(){
+      return vm.currentQuestion.id !== null;
+    }
+
+    function resetQuestion(){
+      console.log('resetQuestion');
+      vm.currentQuestion = new Question();
     }
 
     function addQuestion() {
@@ -79,7 +90,7 @@
 
     function isQuestionValid(){
       var q = vm.currentQuestion;
-      return q.text != null && q.order != null && (q.answers.length > 0 || q.answer != null);
+      return q.id === null && q.text != null && q.order != null && (q.answers.length > 0 || q.answer != null);
     }
   }
 
