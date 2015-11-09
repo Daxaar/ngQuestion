@@ -1,16 +1,21 @@
 <section ng-controller="BoardController as vm">
 <h2>{{vm.title}}</h2>
+<form name="boardForm">
 
-<div>
-  <label for="name">Board Name</label>
-  <input ng-model="vm.currentBoard.name" name="name" type="textbox" required/>
-  <div ng-messages="boardForm.name.$error" ng-show="boardForm.name.$touched">
-    <div ng-message="required">
-      Board Name required
+  <div id="errorPanel">
+    <div ng-messages="boardForm.name.$error" ng-show="boardForm.name.$touched">
+      <div ng-message="required">Board Name required</div>
+    </div>
+    <div ng-messages="boardForm.text.$error" ng-show="boardForm.text.$touched">
+      <div ng-message="required">Question Text Required</div>
+    </div>
+    <div ng-messages="boardForm.order.$error" ng-show="boardForm.order.$touched">
+      <div ng-message="required">Order Required</div>
     </div>
   </div>
 
-</div>
+  <label for="name">Board Name</label>
+  <input ng-model="vm.currentBoard.name" name="name" type="textbox" required/>
 
 <div id="existingQuestions">
   Existing Questions on Board
@@ -29,10 +34,12 @@
 <h4 ng-show="vm.currentQuestion.id !== null">Editing question {{vm.currentQuestion.id}}</h4>
 
 <label for="text">Text</label>
-<input name="text" ng-model="vm.currentQuestion.text"/>
+<input name="text" ng-model="vm.currentQuestion.text" required/>
+
 
 <label for="order">Order</label>
-<input name="order" ng-model="vm.currentQuestion.order"/>
+<input name="order" ng-model="vm.currentQuestion.order" required/>
+
 
 <label for="answer">Answer</label>
   <input ng-value="vm.currentQuestion.answer.id" ng-model="vm.currentQuestion.answer.text" ng-keypress="vm.addAnswer($event)"/>
@@ -47,6 +54,7 @@
   <button ng-show="vm.isEditMode()" ng-click="vm.resetQuestion()">Cancel Question Edit</button>
 
 </div>
+</form>
 
 <button ng-click="vm.save()" name="button">Save</button>
 </section>

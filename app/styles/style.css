@@ -16,3 +16,9 @@ h2{
 #questionPanel{
   background-color: gainsboro;
 }
+
+#errorPanel {
+  padding: 10px;
+  border:1px solid red;
+  margin-bottom: 20px;
+}
