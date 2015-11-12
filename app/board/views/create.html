@@ -1,10 +1,12 @@
 <section ng-controller="BoardController as vm">
 <h2>{{vm.title}}</h2>
 
+<form name="boardForm">
+
 <div>
   <label for="name">Board Name</label>
   <input ng-model="vm.currentBoard.name" name="name" type="textbox" required/>
-  <div ng-messages="boardForm.name.$error" ng-show="boardForm.name.$touched">
+  <div ng-messages="boardForm.name.$error" ng-show="boardForm.name.$dirty">
     <div ng-message="required">
       Board Name required
     </div>
@@ -16,9 +18,12 @@
   Existing Questions on Board
   <ul>
   <li ng-repeat="q in vm.currentBoard.questions">
-    <span ng-click="vm.currentQuestion = q">{{q.text}}</span>
+
+    <!-- <span ng-click="vm.currentQuestion = q">{{q.text}}</span> -->
+    <span ng-click="vm.editQuestion(q)">{{q.text}}</span>
     <ul>
-      <li ng-repeat="a in q.answers">{{a.text}}</li>
+      <li ng-repeat="a in q.answers">
+        {{a.text}}</li>
     </ul>
   </li>
   </ul>
@@ -39,16 +44,23 @@
   <button ng-disabled="vm.currentQuestion.answer.text === null" ng-click="vm.addAnswer()">Add</button>
   <ul>
     <li ng-repeat="answer in vm.currentQuestion.answers">
-      {{answer.text}} |
+      <input type="text" ng-model="answer.text" required></input>
       <a ng-show="vm.currentQuestion.answers.length > 0" ng-click="vm.removeAnswer(answer)" href="">Remove</a>
     </li>
   </ul>
   <button ng-show="!vm.isEditMode()" ng-click="vm.addQuestion()" ng-disabled="!vm.isQuestionValid()">Add Question</button>
+  <button ng-show="vm.isEditMode()" ng-click="vm.updateQuestion()">Complete Question Edit</button>
   <button ng-show="vm.isEditMode()" ng-click="vm.resetQuestion()">Cancel Question Edit</button>
 
 </div>
+</form>
 
 <button ng-click="vm.save()" name="button">Save</button>
+
+<div class="json">
+  {{boardForm | json}}
+</div>
+
 </section>
 
 <section>

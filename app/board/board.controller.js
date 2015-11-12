@@ -22,6 +22,9 @@
     vm.isQuestionValid = isQuestionValid;
     vm.resetQuestion = resetQuestion;
     vm.isEditMode = isEditMode;
+    vm.editQuestion = editQuestion;
+    vm.updateQuestion = updateQuestion;
+
     //vm.isEditMode = vm.currentQuestion.id !== null;
     activate();
 
@@ -37,6 +40,20 @@
       }
     }
 
+    function updateQuestion(){
+
+        for (var i = 0; i < vm.currentBoard.questions.length; i++) {
+
+          if(vm.currentBoard.questions[i].id == vm.currentQuestion.id){
+            vm.currentBoard.questions[i] = vm.currentQuestion;
+          }
+        }
+        vm.currentQuestion = null;
+    }
+
+    function editQuestion(question){
+      vm.currentQuestion = angular.copy(question);
+    }
     function isEditMode(){
       return vm.currentQuestion.id !== null;
     }

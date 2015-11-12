@@ -16,3 +16,8 @@ h2{
 #questionPanel{
   background-color: gainsboro;
 }
+
+.json {
+  font-size:0.8em;
+  font-family: monospace;
+}
