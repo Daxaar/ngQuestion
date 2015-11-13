@@ -49,17 +49,15 @@
     </li>
   </ul>
   <button ng-show="!vm.isEditMode()" ng-click="vm.addQuestion()" ng-disabled="!vm.isQuestionValid()">Add Question</button>
-  <button ng-show="vm.isEditMode()" ng-click="vm.updateQuestion()">Complete Question Edit</button>
-  <button ng-show="vm.isEditMode()" ng-click="vm.resetQuestion()">Cancel Question Edit</button>
+  <div ng-show="vm.isEditMode()">
+    <button ng-click="vm.updateQuestion()">Save Question Changes</button>
+    <button ng-click="vm.resetQuestion()">Cancel Question Changes</button>
+  </div>
 
 </div>
 </form>
 
-<button ng-click="vm.save()" name="button">Save</button>
-
-<div class="json">
-  {{boardForm | json}}
-</div>
+<button ng-click="vm.save()" name="button">Save Board</button>
 
 </section>
 
