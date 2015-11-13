@@ -25,7 +25,6 @@
     vm.editQuestion = editQuestion;
     vm.updateQuestion = updateQuestion;
 
-    //vm.isEditMode = vm.currentQuestion.id !== null;
     activate();
 
     function activate(){
@@ -48,7 +47,7 @@
             vm.currentBoard.questions[i] = vm.currentQuestion;
           }
         }
-        vm.currentQuestion = null;
+        vm.resetQuestion();
     }
 
     function editQuestion(question){
@@ -59,7 +58,6 @@
     }
 
     function resetQuestion(){
-      console.log('resetQuestion');
       vm.currentQuestion = new Question();
     }
 
