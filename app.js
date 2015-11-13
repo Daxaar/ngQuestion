@@ -13,7 +13,7 @@
       templateUrl: 'app/board/views/create.html'
     })
     .state('edit', {
-      url: "/boards/create/:boardId",
+      url: "/boards/edit/:boardId",
       templateUrl: 'app/board/views/create.html'
     })
     .state('view',{
