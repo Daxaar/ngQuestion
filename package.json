@@ -4,7 +4,7 @@
   "description": "Angular application created from scratch.  No generators or templates.",
   "main": "index.js",
   "scripts": {
-    "test" : "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
     "start": "live-server .",
     "postinstall": "bower install"
   },
@@ -12,6 +12,15 @@
   "license": "ISC",
   "devDependencies": {
     "bower": "^1.6.3",
+    "browser-sync": "^2.10.0",
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-inject": "^3.0.0",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-tslint": "^3.6.0",
+    "gulp-typescript": "^2.9.2",
     "http-server": "^0.8.5",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.14",
@@ -20,6 +29,7 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-spec-reporter": "0.0.21",
     "live-server": "^0.8.2",
-    "phantomjs": "^1.9.18"
+    "phantomjs": "^1.9.18",
+    "superstatic": "^3.0.0"
   }
 }
