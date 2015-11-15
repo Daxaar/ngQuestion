@@ -9,9 +9,11 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ngQuestion.WebApi.Models;
+using System.Web.Http.Cors;
 
 namespace ngQuestion.WebApi.Controllers
 {
+    [EnableCors("*","*","*")]
     public class BoardController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
