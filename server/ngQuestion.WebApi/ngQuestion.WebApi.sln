@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ngQuestion.WebApi", "ngQuestion.WebApi\ngQuestion.WebApi.csproj", "{A7FFD80C-E6CB-466A-801A-234813B5BBBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ngQuestion.WebApi.Tests", "ngQuestion.WebApi.Tests\ngQuestion.WebApi.Tests.csproj", "{69CD8ED0-E951-4DE6-897A-576D9CD6BFD7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7FFD80C-E6CB-466A-801A-234813B5BBBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7FFD80C-E6CB-466A-801A-234813B5BBBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7FFD80C-E6CB-466A-801A-234813B5BBBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7FFD80C-E6CB-466A-801A-234813B5BBBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69CD8ED0-E951-4DE6-897A-576D9CD6BFD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69CD8ED0-E951-4DE6-897A-576D9CD6BFD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69CD8ED0-E951-4DE6-897A-576D9CD6BFD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69CD8ED0-E951-4DE6-897A-576D9CD6BFD7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
