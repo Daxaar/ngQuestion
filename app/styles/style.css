@@ -21,3 +21,17 @@ h2{
   font-size:0.8em;
   font-family: monospace;
 }
+
+.board {
+  display:inline-block;
+  height:100px;
+  width:120px;
+  background-color: yellow;
+  padding: 5px;
+  margin:5px;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+.create {
+  width:100%;
+}

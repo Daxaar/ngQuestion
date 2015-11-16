@@ -1,8 +1,9 @@
 <h2>Boards</h2>
 
 <div ng-controller="BoardController as vm">
-  <div ng-repeat="board in vm.boardList">
-    <a ui-sref="edit({boardId:board.id})">{{board.name}}</a> |
+  <div class="board" ng-repeat="board in vm.boardList">
+    <a ui-sref="edit({boardId:board.id})">{{board.name}}</a>
+    <hr>
     <a ng-click="vm.remove(board)">Remove</a>
   </div>
 </div>
