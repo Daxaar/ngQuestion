@@ -15,7 +15,7 @@
     vm.addQuestion = addQuestion;
     vm.addAnswer = addAnswer;
     vm.removeAnswer = removeAnswer;
-    vm.createBoard = createBoard;
+    //vm.createBoard = createBoard;
     vm.createQuestion = createQuestion;
     vm.save = save;
     vm.list = list;
@@ -24,19 +24,34 @@
     vm.isEditMode = isEditMode;
     vm.editQuestion = editQuestion;
     vm.updateQuestion = updateQuestion;
+    vm.remove = remove;
 
     activate();
 
     function activate(){
       var board, id = $stateParams.boardId;
-      if(id){
-        board = boardService.getById(id);
-        if(board && board.length > 0){
-          vm.currentBoard = board[0];
-        }
+      if(id) {
+        boardService.getById(id)
+          .success( function( data ){
+            if(data){
+              vm.currentBoard = data;
+            }
+          });
       } else {
         vm.boardList = list();
       }
+    }
+
+    function remove(board){
+        boardService.remove(board).then(success,fail);
+
+        function success(data) {
+          vm.boardList = _without(vm.boardList,board);
+        }
+
+        function fail(data){
+          alert(data.status + ' : ' + data.statusText);
+        }
     }
 
     function updateQuestion(){
@@ -91,16 +106,19 @@
       return new Question();
     }
 
-    function createBoard(){
-      boardService.create(vm.currentBoard);
-    }
+    // function createBoard(){
+    //   boardService.create(vm.currentBoard);
+    // }
 
     function save(){
       boardService.save(vm.currentBoard);
     }
 
     function list(){
-      return boardService.getAll();
+      boardService.getAll()
+        .success(function (data) {
+          vm.boardList = data;
+        });
     }
 
     function isQuestionValid(){

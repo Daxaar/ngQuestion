@@ -24,7 +24,6 @@
       url: "/boards",
       templateUrl: 'app/board/views/list.html'
     });
-
   }
 
 }());

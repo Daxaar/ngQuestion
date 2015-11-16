@@ -5,41 +5,64 @@
     .service('BoardService', function ($http) {
       var vm = this;
 
+      var url = "http://ngquestion.azurewebsites.net/api/board";
+
       return {
         getAll : getAll,
         getById : getById,
-        save : save
+        save : save,
+        remove : remove
       };
 
+      function remove(board){
+        return $http.delete(board.id);
+      }
       function save(board){
-        var boards = JSON.parse(localStorage.getItem('boards') || '[]');
 
-        var existingBoardId;
-
-        for (var i = 0; i < boards.length; i++) {
-          if(boards[i].id === board.id){
-            existingBoardId = i;
-            break;
-          }
-        }
-
-        if(existingBoardId !== undefined) {
-          boards[existingBoardId] = board;
+        if(board.id !== null) {
+          $http.put(url,board);
         } else {
-          board.id = boards.length + 1;
-          boards.push(board);
+          delete board.id;
+          for (var i = 0; i < board.questions.length; i++) {
+            delete board.questions[i].id;
+            for (var j = 0; j < board.questions[i].answers.length; j++) {
+              delete board.questions[i].answers[j].id;
+            }
+          }
+          $http.post(url,board);
         }
-        localStorage.setItem('boards',angular.toJson(boards));
+
+        return;
+        // var boards = JSON.parse(localStorage.getItem('boards') || '[]');
+
+        // var existingBoardId;
+        //
+        // for (var i = 0; i < boards.length; i++) {
+        //   if(boards[i].id === board.id){
+        //     existingBoardId = i;
+        //     break;
+        //   }
+        // }
+        //
+        // if(existingBoardId !== undefined) {
+        //   boards[existingBoardId] = board;
+        // } else {
+        //   board.id = boards.length + 1;
+        //   boards.push(board);
+        // }
+        // localStorage.setItem('boards',angular.toJson(boards));
       }
 
       function getAll(){
-        return JSON.parse(localStorage.getItem('boards') || '[]');
+        return $http.get(url);
+        //return JSON.parse(localStorage.getItem('boards') || '[]');
       }
 
       function getById(id){
-        return getAll().filter(function (question) {
-          return question.id == id;
-        });
+        return $http.get(url + '/' + id);
+        //return getAll().filter(function (question) {
+          //return question.id == id;
+        //});
       }
     });
 
