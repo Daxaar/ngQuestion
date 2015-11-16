@@ -24,6 +24,7 @@
     vm.isEditMode = isEditMode;
     vm.editQuestion = editQuestion;
     vm.updateQuestion = updateQuestion;
+    vm.remove = remove;
 
     activate();
 
@@ -39,6 +40,18 @@
       } else {
         vm.boardList = list();
       }
+    }
+
+    function remove(board){
+        boardService.remove(board).then(success,fail);
+
+        function success(data) {
+          vm.boardList = _without(vm.boardList,board);
+        }
+
+        function fail(data){
+          alert(data.status + ' : ' + data.statusText);
+        }
     }
 
     function updateQuestion(){

@@ -10,9 +10,13 @@
       return {
         getAll : getAll,
         getById : getById,
-        save : save
+        save : save,
+        remove : remove
       };
 
+      function remove(board){
+        return $http.delete(board.id);
+      }
       function save(board){
 
         if(board.id !== null) {
