@@ -8,6 +8,6 @@ namespace ngQuestion.WebApi.Models
         public string Text { get; set; }
         public int Order { get; set; }
         public string Answer { get; set; }
-        public List<string> Answers { get; set; }
+        public List<Answer> Answers { get; set; }
     }
 }

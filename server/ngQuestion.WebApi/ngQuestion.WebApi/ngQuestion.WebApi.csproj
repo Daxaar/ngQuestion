@@ -293,9 +293,14 @@
     <Compile Include="Migrations\201511141618019_Initial.Designer.cs">
       <DependentUpon>201511141618019_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511162130012_Changed-Answers-To-List.cs" />
+    <Compile Include="Migrations\201511162130012_Changed-Answers-To-List.Designer.cs">
+      <DependentUpon>201511162130012_Changed-Answers-To-List.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Question.cs" />
@@ -386,6 +391,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201511141618019_Initial.resx">
       <DependentUpon>201511141618019_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511162130012_Changed-Answers-To-List.resx">
+      <DependentUpon>201511162130012_Changed-Answers-To-List.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

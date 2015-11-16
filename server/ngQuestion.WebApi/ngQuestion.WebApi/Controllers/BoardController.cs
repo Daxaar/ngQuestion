@@ -21,27 +21,19 @@ namespace ngQuestion.WebApi.Controllers
         // GET: api/Board
         public IQueryable<Board> GetBoards()
         {
-            return db.Boards;
+            return db.Boards.Include(x => x.Questions.Select(q => q.Answers)).ToList().AsQueryable();
         }
 
         // GET: api/Board/5
         [ResponseType(typeof(Board))]
         public IHttpActionResult GetBoard(int id)
         {
-            Board board = db.Boards.Find(id);
+            Board board = db.Boards.Where(x => x.Id == id)
+                                   .Include(x => x.Questions.Select(q => q.Answers))
+                                   .SingleOrDefault();
+
             if (board == null)
             {
-                //board = new Board()
-                //{
-                //    Id = 1,
-                //    Name = "Board Name",
-                //    Questions = new List<Question>()
-                //    {
-                //        new Question() {Id=1,Text="Q1",Answer="A",Answers=new List<string>() {"A2","A3" } },
-                //        new Question() {Id=1,Text="Q2",Answer="A1",Answers=new List<string>() {"A4","A5" } }
-                //    }
-                //};
-                
                 return NotFound();
             }
 
