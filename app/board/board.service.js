@@ -5,7 +5,7 @@
     .service('BoardService', function ($http) {
       var vm = this;
 
-      var url = "http://ngquestion.azurewebsites.net/api/board";
+      var url = "http://ngquestion.azurewebsites.net/api/board/";
 
       return {
         getAll : getAll,
@@ -20,7 +20,7 @@
       function save(board){
 
         if(board.id !== null) {
-          $http.put(url,board);
+          $http.put(url + board.id,board);
         } else {
           delete board.id;
           for (var i = 0; i < board.questions.length; i++) {
@@ -59,7 +59,7 @@
       }
 
       function getById(id){
-        return $http.get(url + '/' + id);
+        return $http.get(url + id);
         //return getAll().filter(function (question) {
           //return question.id == id;
         //});
