@@ -297,6 +297,10 @@
     <Compile Include="Migrations\201511162130012_Changed-Answers-To-List.Designer.cs">
       <DependentUpon>201511162130012_Changed-Answers-To-List.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511172046475_Removed Question.Answer Property.cs" />
+    <Compile Include="Migrations\201511172046475_Removed Question.Answer Property.Designer.cs">
+      <DependentUpon>201511172046475_Removed Question.Answer Property.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -394,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511162130012_Changed-Answers-To-List.resx">
       <DependentUpon>201511162130012_Changed-Answers-To-List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511172046475_Removed Question.Answer Property.resx">
+      <DependentUpon>201511172046475_Removed Question.Answer Property.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
