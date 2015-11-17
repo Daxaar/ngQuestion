@@ -19,7 +19,7 @@
       }
       function save(board){
 
-        if(board.id !== null) {
+        if(board.id) {
           $http.put(url + board.id,board);
         } else {
           delete board.id;
