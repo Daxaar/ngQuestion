@@ -54,8 +54,24 @@ namespace ngQuestion.WebApi.Controllers
                 return BadRequest();
             }
 
-            db.Entry(board).State = EntityState.Modified;
+            var existingBoard = db.Boards.Find(id);
+            db.Entry(existingBoard).CurrentValues.SetValues(board);
+            //var entity = db.Entry(board).State = EntityState.Modified;
 
+            //foreach (var question in board.Questions)
+            //{
+            //    if (question.Id == 0)
+            //    {
+            //        db.Entry(question).State = EntityState.Added;
+            //    }
+            //    foreach (var answer in question.Answers)
+            //    {
+            //        if (answer.Id == 0)
+            //        {
+            //            db.Entry(answer).State = EntityState.Added;
+            //        }
+            //    }
+            //}
             try
             {
                 db.SaveChanges();
