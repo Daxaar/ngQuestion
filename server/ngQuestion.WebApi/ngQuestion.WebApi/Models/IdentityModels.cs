@@ -31,5 +31,7 @@ namespace ngQuestion.WebApi.Models
         }
 
         public System.Data.Entity.DbSet<Board> Boards { get; set; }
+        public System.Data.Entity.DbSet<Question> Questions { get; set; }
+        public System.Data.Entity.DbSet<Answer> Answers { get; set; }
     }
 }
