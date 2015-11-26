@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Linq;
+using System.Data.Entity;
 
 namespace ngQuestion.WebApi.Models
 {
@@ -30,8 +32,53 @@ namespace ngQuestion.WebApi.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Board> Boards { get; set; }
-        public System.Data.Entity.DbSet<Question> Questions { get; set; }
-        public System.Data.Entity.DbSet<Answer> Answers { get; set; }
+        public DbSet<Board> Boards { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+    }
+
+    public class BoardMapper
+    {
+        private readonly ApplicationDbContext db;
+
+        public BoardMapper(ApplicationDbContext context)
+        {
+            db = context;
+        }
+
+        public void Map(Board source)
+        {
+            var existingBoard = db.Boards.Where(x => x.Id == source.Id)
+                             .Include(x => x.Questions.Select(q => q.Answers))
+                             .SingleOrDefault();
+
+            foreach (var question in existingBoard.Questions)
+            {
+                var inputQuestion = existingBoard.Questions.SingleOrDefault(q => q.Id == question.Id);
+
+                if (inputQuestion != null && question.Equals(inputQuestion) == false)
+                {
+                    //Question exists and has changed
+                    db.Entry(question).CurrentValues.SetValues(inputQuestion);
+                }
+                foreach (var answer in question.Answers)
+                {
+                    var inputAnswer = inputQuestion.Answers.SingleOrDefault(a => a.Id == answer.Id);
+                    if (inputAnswer != null && answer.Equals(inputAnswer) == false)
+                    {
+                        //Answer exists and has changed
+                        db.Entry(answer).CurrentValues.SetValues(inputAnswer);
+                    }
+                }
+            }
+
+            db.Entry(existingBoard).CurrentValues.SetValues(source);
+
+            var newQuestions = source.Questions.Where(q => q.Id == 0);
+            var newAnswers = source.Questions.SelectMany(q => q.Answers).Where(a => a.Id == 0);
+
+            db.Questions.AddRange(newQuestions);
+            db.Answers.AddRange(newAnswers);
+        }
     }
 }

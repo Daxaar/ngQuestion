@@ -51,49 +51,9 @@ namespace ngQuestion.WebApi.Controllers
                 return BadRequest();
             }
 
-            var existingBoard = db.Boards.Where(x => x.Id == id)
-                                         .Include(x => x.Questions.Select(q => q.Answers))
-                                         .SingleOrDefault();
+            var mapper = new BoardMapper(db);
+            mapper.Map(board);
 
-            db.Entry(existingBoard).CurrentValues.SetValues(board);
-
-            //Questions
-            var existingInBoth = existingBoard.Questions.Select(x => board.Questions.Any(n => n.Id == x.Id));
-            var deleted = existingBoard.Questions.Except(board.Questions);
-            var added = board.Questions.Where(q => q.Id == 0);
-
-            existingBoard.Questions.RemoveAll(q => deleted.Any(d => d.Id == q.Id));
-            existingBoard.Questions.AddRange(added);
-            existingBoard
-            foreach (var existingQuestion in existingBoard.Questions)
-            {   
-
-            }
-
-            foreach (var question in board.Questions)
-            {
-                if (question.Id == 0)
-                {
-                    db.Entry(question).State = EntityState.Added;
-                }
-                else
-                {
-                    db.Entry(question).CurrentValues.SetValues(question);
-                }
-
-                foreach (var answer in question.Answers)
-                {
-                    if (answer.Id == 0)
-                    {
-                        db.Entry(answer).State = EntityState.Added;
-                    }
-                    else
-                    {
-
-                        db.Entry(answer).CurrentValues.SetValues(answer);
-                    }
-                }
-            }
             try
             {
                 db.SaveChanges();

@@ -284,8 +284,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnswersController.cs" />
     <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -300,6 +302,14 @@
     <Compile Include="Migrations\201511172046475_Removed Question.Answer Property.cs" />
     <Compile Include="Migrations\201511172046475_Removed Question.Answer Property.Designer.cs">
       <DependentUpon>201511172046475_Removed Question.Answer Property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511261825002_AddedQuestionID.cs" />
+    <Compile Include="Migrations\201511261825002_AddedQuestionID.Designer.cs">
+      <DependentUpon>201511261825002_AddedQuestionID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511261834348_AddedBoardID.cs" />
+    <Compile Include="Migrations\201511261834348_AddedBoardID.Designer.cs">
+      <DependentUpon>201511261834348_AddedBoardID.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -402,6 +412,12 @@
     <EmbeddedResource Include="Migrations\201511172046475_Removed Question.Answer Property.resx">
       <DependentUpon>201511172046475_Removed Question.Answer Property.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511261825002_AddedQuestionID.resx">
+      <DependentUpon>201511261825002_AddedQuestionID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511261834348_AddedBoardID.resx">
+      <DependentUpon>201511261834348_AddedBoardID.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -417,7 +433,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>16005</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

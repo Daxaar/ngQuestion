@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ngQuestion.WebApi", "ngQues
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ngQuestion.WebApi.Tests", "ngQuestion.WebApi.Tests\ngQuestion.WebApi.Tests.csproj", "{69CD8ED0-E951-4DE6-897A-576D9CD6BFD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{E93D3827-AF90-421D-B40D-470B4F779F49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{69CD8ED0-E951-4DE6-897A-576D9CD6BFD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69CD8ED0-E951-4DE6-897A-576D9CD6BFD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69CD8ED0-E951-4DE6-897A-576D9CD6BFD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E93D3827-AF90-421D-B40D-470B4F779F49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E93D3827-AF90-421D-B40D-470B4F779F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E93D3827-AF90-421D-B40D-470B4F779F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E93D3827-AF90-421D-B40D-470B4F779F49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
