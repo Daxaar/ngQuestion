@@ -32,38 +32,14 @@
           }
           $http.post(url,board);
         }
-
-        return;
-        // var boards = JSON.parse(localStorage.getItem('boards') || '[]');
-
-        // var existingBoardId;
-        //
-        // for (var i = 0; i < boards.length; i++) {
-        //   if(boards[i].id === board.id){
-        //     existingBoardId = i;
-        //     break;
-        //   }
-        // }
-        //
-        // if(existingBoardId !== undefined) {
-        //   boards[existingBoardId] = board;
-        // } else {
-        //   board.id = boards.length + 1;
-        //   boards.push(board);
-        // }
-        // localStorage.setItem('boards',angular.toJson(boards));
       }
 
       function getAll(){
         return $http.get(url);
-        //return JSON.parse(localStorage.getItem('boards') || '[]');
       }
 
       function getById(id){
         return $http.get(url + id);
-        //return getAll().filter(function (question) {
-          //return question.id == id;
-        //});
       }
     });
 
