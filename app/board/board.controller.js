@@ -69,7 +69,7 @@
       vm.currentQuestion = angular.copy(question);
     }
     function isEditMode(){
-      return vm.currentQuestion.id !== null;
+      return vm.currentQuestion.id !== 0;
     }
 
     function resetQuestion(){
@@ -77,7 +77,7 @@
     }
 
     function addQuestion() {
-      vm.currentQuestion.id = vm.currentBoard.questions.length + 1;
+      //vm.currentQuestion.id = vm.currentBoard.questions.length + 1;
       vm.currentBoard.questions.push(vm.currentQuestion);
       vm.currentQuestion = createQuestion();
     }
@@ -90,7 +90,7 @@
       }
 
       vm.currentQuestion.answers.push({
-        id: vm.currentQuestion.answers.length + 1,
+        id: 0,
         text: vm.currentQuestion.answer.text
       });
       vm.currentQuestion.answer = null;
@@ -123,18 +123,18 @@
 
     function isQuestionValid(){
       var q = vm.currentQuestion;
-      return q.id === null && q.text != null && q.order != null && (q.answers.length > 0 || q.answer != null);
+      return q.id === 0 && q.text != null && q.order != null && (q.answers.length > 0 || q.answer != null);
     }
   }
 
   function Board(){
-    this.id = null;
+    this.id = 0;
     this.questions = [];
     this.name = null;
   }
 
   function Question(){
-    this.id = null;
+    this.id = 0;
     this.text = null;
     this.answers = [];
     this.answer = null;

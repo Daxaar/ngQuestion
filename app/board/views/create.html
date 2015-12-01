@@ -30,8 +30,8 @@
 </div>
 
 <div id="questionPanel">
-<h4 ng-show="vm.currentQuestion.id === null">Create a question</h4>
-<h4 ng-show="vm.currentQuestion.id !== null">Editing question {{vm.currentQuestion.id}}</h4>
+<h4 ng-show="vm.currentQuestion.id === 0">Create a question</h4>
+<h4 ng-show="vm.currentQuestion.id !== 0">Editing question {{vm.currentQuestion.id}}</h4>
 
 <label for="text">Text</label>
 <input name="text" ng-model="vm.currentQuestion.text"/>

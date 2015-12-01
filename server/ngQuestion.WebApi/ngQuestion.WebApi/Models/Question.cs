@@ -4,6 +4,11 @@ namespace ngQuestion.WebApi.Models
 {
     public class Question
     {
+        public Question()
+        {
+            Id = 0;
+        }
+
         public int Id { get; set; }
         public string Text { get; set; }
         public int Order { get; set; }
