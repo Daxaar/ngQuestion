@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
 using System.Linq;
 using System.Data.Entity;
 
@@ -20,11 +19,16 @@ namespace ngQuestion.WebApi.Models
         }
     }
 
+    public class MyInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+    {
+
+    }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new MyInitializer());
         }
         
         public static ApplicationDbContext Create()
@@ -35,6 +39,18 @@ namespace ngQuestion.WebApi.Models
         public DbSet<Board> Boards { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Board>()
+                .HasOptional(a => a.Questions)
+                .WithOptionalDependent()
+                .WillCascadeOnDelete(true);
+            modelBuilder.Entity<Question>()
+                .HasOptional(a => a.Answers)
+                .WithOptionalDependent()
+                .WillCascadeOnDelete(true);
+        }
     }
 
     public class BoardMapper

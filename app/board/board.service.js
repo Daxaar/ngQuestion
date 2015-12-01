@@ -5,8 +5,8 @@
     .service('BoardService', function ($http) {
       var vm = this;
 
-      //var url = "http://ngquestion.azurewebsites.net/api/board/";
-      var url = "http://localhost:16005/api/board/";
+      var url = "http://ngquestion.azurewebsites.net/api/board/";
+      //var url = "http://localhost:16005/api/board/";
 
       return {
         getAll : getAll,
@@ -15,8 +15,8 @@
         remove : remove
       };
 
-      function remove(board){
-        return $http.delete(board.id);
+      function remove(board) {
+        return $http.delete(url + board.id);
       }
       function save(board){
 
