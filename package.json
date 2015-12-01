@@ -11,10 +11,12 @@
   "author": "Darren Lewis",
   "license": "ISC",
   "devDependencies": {
+    "babel-preset-es2015": "^6.1.18",
     "bower": "^1.6.3",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.1",
     "http-server": "^0.8.5",
+    "install": "^0.4.0",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.14",
     "karma-chrome-launcher": "^0.2.1",
@@ -22,6 +24,7 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-spec-reporter": "0.0.21",
     "live-server": "^0.8.2",
+    "npm": "^3.5.0",
     "phantomjs": "^1.9.18"
   }
 }
