@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using ngQuestion.WebApi.Models;
 using ngQuestion.WebApi.Providers;
 using ngQuestion.WebApi.Results;
+using ngQuestionApi.Models;
 
 namespace ngQuestion.WebApi.Controllers
 {

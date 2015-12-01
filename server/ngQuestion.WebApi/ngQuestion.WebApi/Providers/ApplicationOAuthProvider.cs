@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using ngQuestion.WebApi.Models;
+using ngQuestionApi.Models;
 
 namespace ngQuestion.WebApi.Providers
 {

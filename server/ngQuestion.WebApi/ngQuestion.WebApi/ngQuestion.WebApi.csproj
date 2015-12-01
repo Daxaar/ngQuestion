@@ -291,32 +291,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511141618019_Initial.cs" />
-    <Compile Include="Migrations\201511141618019_Initial.Designer.cs">
-      <DependentUpon>201511141618019_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511162130012_Changed-Answers-To-List.cs" />
-    <Compile Include="Migrations\201511162130012_Changed-Answers-To-List.Designer.cs">
-      <DependentUpon>201511162130012_Changed-Answers-To-List.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511172046475_Removed Question.Answer Property.cs" />
-    <Compile Include="Migrations\201511172046475_Removed Question.Answer Property.Designer.cs">
-      <DependentUpon>201511172046475_Removed Question.Answer Property.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511261825002_AddedQuestionID.cs" />
-    <Compile Include="Migrations\201511261825002_AddedQuestionID.Designer.cs">
-      <DependentUpon>201511261825002_AddedQuestionID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511261834348_AddedBoardID.cs" />
-    <Compile Include="Migrations\201511261834348_AddedBoardID.Designer.cs">
-      <DependentUpon>201511261834348_AddedBoardID.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Board.cs" />
+    <Compile Include="Models\BoardMapper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MyInitializer.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -402,23 +385,6 @@
   <ItemGroup>
     <None Include="Project_Readme.html" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511141618019_Initial.resx">
-      <DependentUpon>201511141618019_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511162130012_Changed-Answers-To-List.resx">
-      <DependentUpon>201511162130012_Changed-Answers-To-List.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511172046475_Removed Question.Answer Property.resx">
-      <DependentUpon>201511172046475_Removed Question.Answer Property.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511261825002_AddedQuestionID.resx">
-      <DependentUpon>201511261825002_AddedQuestionID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511261834348_AddedBoardID.resx">
-      <DependentUpon>201511261834348_AddedBoardID.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -433,7 +399,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>16005</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

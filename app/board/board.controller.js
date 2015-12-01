@@ -15,7 +15,6 @@
     vm.addQuestion = addQuestion;
     vm.addAnswer = addAnswer;
     vm.removeAnswer = removeAnswer;
-    //vm.createBoard = createBoard;
     vm.createQuestion = createQuestion;
     vm.save = save;
     vm.list = list;
@@ -38,6 +37,7 @@
             }
           });
       } else {
+        //TODO: Fix this as it's triggered when we hit the create URL
         vm.boardList = list();
       }
     }
@@ -46,7 +46,7 @@
         boardService.remove(board).then(success,fail);
 
         function success(data) {
-          vm.boardList = _without(vm.boardList,board);
+          vm.boardList = _.without(vm.boardList,board);
         }
 
         function fail(data){

@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using ngQuestion.WebApi.Models;
 using System.Web.Http.Cors;
+using ngQuestionApi.Models;
 
 namespace ngQuestion.WebApi.Controllers
 {

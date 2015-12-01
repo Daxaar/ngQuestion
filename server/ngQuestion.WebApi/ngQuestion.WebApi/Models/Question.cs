@@ -8,7 +8,7 @@ namespace ngQuestion.WebApi.Models
         public string Text { get; set; }
         public int Order { get; set; }
         public List<Answer> Answers { get; set; }
-        public int? BoardID { get; set; }
+        public int BoardId { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -19,8 +19,7 @@ namespace ngQuestion.WebApi.Models
                 return false;
             }
 
-            return other != null && 
-                    Id.Equals(other.Id) && 
+            return Id.Equals(other.Id) && 
                     Text.Equals(other.Text, System.StringComparison.InvariantCulture);
         }
 
