@@ -8,6 +8,7 @@ using System.Web.Http.Description;
 using ngQuestion.WebApi.Models;
 using System.Web.Http.Cors;
 using ngQuestionApi.Models;
+using System;
 
 namespace ngQuestion.WebApi.Controllers
 {
@@ -69,6 +70,10 @@ namespace ngQuestion.WebApi.Controllers
                 {
                     throw;
                 }
+            }
+            catch(Exception e)
+            {
+                return InternalServerError(e);
             }
 
             return StatusCode(HttpStatusCode.NoContent);
