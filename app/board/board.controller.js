@@ -123,7 +123,7 @@
 
     function isQuestionValid(){
       var q = vm.currentQuestion;
-      return q.id === 0 && q.text != null && q.order != null && (q.answers.length > 0 || q.answer != null);
+      return q.id === 0 && q.text !== null && q.order !== null && (q.answers.length > 0 || q.answer !== null);
     }
   }
 

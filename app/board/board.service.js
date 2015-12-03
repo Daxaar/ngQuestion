@@ -20,16 +20,9 @@
       }
       function save(board){
 
-        if(board.id) {
+        if(board.id !== 0) {
           $http.put(url + board.id,board);
         } else {
-          //delete board.id;
-          //for (var i = 0; i < board.questions.length; i++) {
-            //delete board.questions[i].id;
-            //for (var j = 0; j < board.questions[i].answers.length; j++) {
-              //delete board.questions[i].answers[j].id;
-            //}
-          //}
           $http.post(url,board);
         }
       }
