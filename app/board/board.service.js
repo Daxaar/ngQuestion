@@ -6,7 +6,8 @@
       var vm = this;
 
       //var url = "http://ngquestion.azurewebsites.net/api/board/";
-      var url = "http://localhost:16005/api/board/";
+      //var url = "http://localhost:16005/api/board/";
+      var url = "http://localhost:1337/board/";
 
       return {
         getAll : getAll,

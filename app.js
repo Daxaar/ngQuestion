@@ -2,9 +2,11 @@
 
   'use strict';
 
-  //angular.module("MyApp",['ui.router','ngMessages'])
   angular.module("MyApp",['ui.router','ngMessages'])
-    .config(['$stateProvider',configure]);
+    .config(['$stateProvider',configure])
+    .run(['$state', function ($state) {
+        $state.transitionTo('list');
+      }]);
 
   function configure($stateProvider) {
     $stateProvider
