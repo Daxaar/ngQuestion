@@ -11,10 +11,6 @@ module.exports = {
       collection: 'Question',
       via: 'board'
     },
-    value: {
-      type: 'string',
-      defaultsTo: 'default value'
-    },
     name: { type: 'string' }
   }
 };

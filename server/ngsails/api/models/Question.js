@@ -14,9 +14,6 @@ module.exports = {
     answers: {
       collection: 'Answer',
       via:'question'
-    },
-    user:{
-      model: 'user'
     }
   }
 };

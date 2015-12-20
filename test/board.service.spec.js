@@ -5,7 +5,7 @@ describe('BoardService', function(){
       storage,
       boards = [{id : 1,name : "Test Board",questions : null}],
       http,
-      url = 'http://ngquestion.azurewebsites.net/api/board/';
+      url = "http://localhost:1337/board/";// 'http://ngquestion.azurewebsites.net/api/board/'
 
   beforeEach(module('MyApp'));
 
@@ -29,6 +29,12 @@ describe('BoardService', function(){
       http.expectPOST(url);
       service.save({name:"Test Board Name",questions: []});
       http.flush();
+    });
+
+    it('fails validation when there are no questions on the board',function () {
+      varservice.save({id:null,name:"Test Board with no questions",questions:[]});
+
+      var response =
     });
     // it('saves the board to localStorage',function () {
     //   spyOn(localStorage,'setItem');

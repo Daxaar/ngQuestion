@@ -6,6 +6,8 @@
     <hr>
     <a ng-click="vm.remove(board)">Remove</a>
   </div>
+
+<h1 ng-show="vm.boardList && vm.boardList.length === 0">Hey, it's empty in here.  You should try creating a board!</h1>
 </div>
 
 <div style="padding-top:20px">

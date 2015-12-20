@@ -66,10 +66,14 @@
     }
 
     function editQuestion(question){
-      vm.currentQuestion = angular.copy(question);
+      boardService.getQuestion(question.id)
+        .success(function(data){
+          vm.currentQuestion = data;
+        });
     }
+
     function isEditMode(){
-      return vm.currentQuestion.id !== 0;
+      return vm.currentQuestion.id !== undefined;
     }
 
     function resetQuestion(){
@@ -90,7 +94,6 @@
       }
 
       vm.currentQuestion.answers.push({
-        id: 0,
         text: vm.currentQuestion.answer.text
       });
       vm.currentQuestion.answer = null;
@@ -106,10 +109,6 @@
       return new Question();
     }
 
-    // function createBoard(){
-    //   boardService.create(vm.currentBoard);
-    // }
-
     function save(){
       boardService.save(vm.currentBoard);
     }
@@ -123,18 +122,16 @@
 
     function isQuestionValid(){
       var q = vm.currentQuestion;
-      return q.id === 0 && q.text !== null && q.order !== null && (q.answers.length > 0 || q.answer !== null);
+      return q !== null && q.id === undefined && q.text !== null && q.order !== null && (q.answers.length > 0 || q.answer !== null);
     }
   }
 
   function Board(){
-    this.id = 0;
     this.questions = [];
     this.name = null;
   }
 
   function Question(){
-    this.id = 0;
     this.text = null;
     this.answers = [];
     this.answer = null;

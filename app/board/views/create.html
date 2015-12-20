@@ -18,8 +18,6 @@
   Existing Questions on Board
   <ul>
   <li ng-repeat="q in vm.currentBoard.questions">
-
-    <!-- <span ng-click="vm.currentQuestion = q">{{q.text}}</span> -->
     <span ng-click="vm.editQuestion(q)">{{q.text}}</span>
     <ul>
       <li ng-repeat="a in q.answers">
@@ -30,8 +28,8 @@
 </div>
 
 <div id="questionPanel">
-<h4 ng-show="vm.currentQuestion.id === 0">Create a question</h4>
-<h4 ng-show="vm.currentQuestion.id !== 0">Editing question {{vm.currentQuestion.id}}</h4>
+<h4 ng-show="vm.currentQuestion.id === undefined">Create a question</h4>
+<h4 ng-show="vm.currentQuestion.id !== undefined">Editing question {{vm.currentQuestion.id}}</h4>
 
 <label for="text">Text</label>
 <input name="text" ng-model="vm.currentQuestion.text"/>
@@ -41,7 +39,7 @@
 
 <label for="answer">Answer</label>
   <input ng-value="vm.currentQuestion.answer.id" ng-model="vm.currentQuestion.answer.text" ng-keypress="vm.addAnswer($event)"/>
-  <button ng-disabled="vm.currentQuestion.answer.text === null" ng-click="vm.addAnswer()">Add</button>
+  <button ng-disabled="vm.currentQuestion.answer.text === undefined" ng-click="vm.addAnswer()">Add</button>
   <ul>
     <li ng-repeat="answer in vm.currentQuestion.answers">
       <input type="text" ng-model="answer.text" required></input>
@@ -59,8 +57,9 @@
 
 <button ng-click="vm.save()" name="button">Save Board</button>
 
-</section>
-
 <section>
   <a ui-sref="list">List All Boards</a>
+</section>
+
+<div> {{vm | json}} </div>
 </section>
