@@ -32,7 +32,8 @@
       }
 
       function getAll(){
-        return $http.get(url);
+        return $http.get("http://localhost:1337/board?populate=name");
+        //return $http.get(url);
       }
 
       function getById(id){
