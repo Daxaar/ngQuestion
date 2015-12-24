@@ -100,8 +100,8 @@
     }
 
     function removeAnswer(answer){
-      vm.currentQuestion.answers = vm.currentQuestion.answers.filter(function (e) {
-        return e.id !== answer.id;
+      vm.currentQuestion.answers = vm.currentQuestion.answers.filter(function (a) {
+        return a.text !== answer.text;
       });
     }
 
