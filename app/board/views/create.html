@@ -7,9 +7,7 @@
   <label for="name">Board Name</label>
   <input ng-model="vm.currentBoard.name" name="name" type="textbox" required/>
   <div ng-messages="boardForm.name.$error" ng-show="boardForm.name.$dirty">
-    <div ng-message="required">
-      Board Name required
-    </div>
+    <div ng-message="required">Board Name required</div>
   </div>
 
 </div>
@@ -22,8 +20,7 @@
     <!-- <span ng-click="vm.currentQuestion = q">{{q.text}}</span> -->
     <span ng-click="vm.editQuestion(q)">{{q.text}}</span>
     <ul>
-      <li ng-repeat="a in q.answers">
-        {{a.text}}</li>
+      <li ng-repeat="a in q.answers">{{a.text}}</li>
     </ul>
   </li>
   </ul>
@@ -59,8 +56,6 @@
 
 <button ng-click="vm.save()" name="button">Save Board</button>
 
-</section>
-
-<section>
-  <a ui-sref="list">List All Boards</a>
+<a ui-sref="list">List All Boards</a>
+<pre> {{vm.currentBoard | json}} </pre>
 </section>
