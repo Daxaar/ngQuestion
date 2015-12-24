@@ -10,10 +10,6 @@ module.exports = {
   attributes: {
     board:{
       model:'Board'
-    },
-    answers: {
-      collection: 'Answer',
-      via:'question'
     }
   }
 };
