@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('MyApp')
-    .service('BoardService', function ($http) {
+         .service('BoardService', function ($http) {
       var vm = this;
       var url = "http://localhost:1337/board/";
 
@@ -27,7 +27,7 @@
       }
 
       function getAll(){
-        return $http.get(url + "populate=name");
+        return $http.get(url + "?populate=name");
       }
 
       function getById(id){

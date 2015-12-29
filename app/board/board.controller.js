@@ -4,9 +4,9 @@
   angular.module("MyApp")
     .controller("BoardController", BoardController);
 
-  BoardController.$inject = ['BoardService','$stateParams'];
+  BoardController.$inject = ['BoardService','QuestionService','$stateParams'];
 
-  function BoardController(boardService, $stateParams) {
+  function BoardController(boardService, questionService, $stateParams) {
 
     var vm = this;
     vm.currentQuestion = vm.currentQuestion || new Question();
@@ -24,6 +24,7 @@
     vm.editQuestion = editQuestion;
     vm.updateQuestion = updateQuestion;
     vm.remove = remove;
+    vm.removeQuestion = removeQuestion;
 
     activate();
 
@@ -65,14 +66,21 @@
         vm.resetQuestion();
     }
 
+    function removeQuestion(){
+
+      for (var i = 0; i < vm.currentBoard.questions.length; i++) {
+        if(vm.currentBoard.questions[i].id === vm.currentQuestion.id){
+          vm.currentBoard.questions.splice(i,1);
+        }
+      }
+      questionService.remove(vm.currentQuestion);
+      resetQuestion();
+    }
+
     function editQuestion(question){
       vm.currentQuestion = _.find(vm.currentBoard.questions,function(q){
         return q.id === question.id;
       });
-      // boardService.getQuestion(question.id)
-      //   .success(function(data){
-      //     vm.currentQuestion = data;
-      //   });
     }
 
     function isEditMode(){
