@@ -5,8 +5,6 @@
     .service('BoardService', function ($http) {
       var vm = this;
 
-      //var url = "http://ngquestion.azurewebsites.net/api/board/";
-      //var url = "http://localhost:16005/api/board/";
       var url = "http://localhost:1337/board/";
       var qUrl = "http://localhost:1337/question/";
 
@@ -14,8 +12,7 @@
         getAll : getAll,
         getById : getById,
         save : save,
-        remove : remove,
-        getQuestion : getQuestion
+        remove : remove
       };
 
       function remove(board) {
@@ -33,15 +30,10 @@
 
       function getAll(){
         return $http.get("http://localhost:1337/board?populate=name");
-        //return $http.get(url);
       }
 
       function getById(id){
         return $http.get(url + id);
-      }
-
-      function getQuestion(id){
-        return $http.get(qUrl + id);
       }
     });
 }());

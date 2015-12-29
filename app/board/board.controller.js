@@ -66,10 +66,13 @@
     }
 
     function editQuestion(question){
-      boardService.getQuestion(question.id)
-        .success(function(data){
-          vm.currentQuestion = data;
-        });
+      vm.currentQuestion = _.find(vm.currentBoard.questions,function(q){
+        return q.id === question.id;
+      });
+      // boardService.getQuestion(question.id)
+      //   .success(function(data){
+      //     vm.currentQuestion = data;
+      //   });
     }
 
     function isEditMode(){
