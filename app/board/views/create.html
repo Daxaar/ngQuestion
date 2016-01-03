@@ -36,7 +36,7 @@
 
 <label for="answer">Answer</label>
   <input ng-value="vm.currentQuestion.answer.id" ng-model="vm.currentQuestion.answer.text" ng-keypress="vm.addAnswer($event)"/>
-  <button ng-disabled="vm.currentQuestion.answer.text === undefined" ng-click="vm.addAnswer()">Add</button>
+  <button ng-disabled="vm.currentQuestion.answer.text === undefined" ng-click="vm.addAnswer($event)">Add</button>
   <ul>
     <li ng-repeat="answer in vm.currentQuestion.answers">
       <input type="text" ng-model="answer.text" required></input>

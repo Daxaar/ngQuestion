@@ -97,11 +97,12 @@
       vm.currentQuestion = createQuestion();
     }
 
-    function addAnswer ( $keyPress ) {
-      if($keyPress && $keyPress.which === 13) {
-        $keyPress.stopImmediatePropagation();
-      } else {
-        return;
+    function addAnswer ( $event ) {
+      if($event instanceof KeyboardEvent) {
+        if($event.which !== 13) {
+          return;
+        }
+        $event.stopImmediatePropagation();
       }
 
       vm.currentQuestion.answers.push({
