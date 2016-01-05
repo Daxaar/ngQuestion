@@ -23,6 +23,7 @@
     "phantomjs": "^1.9.18"
   },
   "dependencies": {
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.1.4"
   }
 }

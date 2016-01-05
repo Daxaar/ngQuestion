@@ -25,6 +25,10 @@
     .state('list',{
       url: "/boards",
       templateUrl: 'app/board/views/list.html'
+    })
+    .state('myboards',{
+      url: "/myboards",
+      templateUrl: 'app/board/views/myboards.html'
     });
   }
 
