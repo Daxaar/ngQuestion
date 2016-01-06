@@ -98,13 +98,14 @@
     }
 
     function addAnswer ( $event ) {
+      $event = $event.originalEvent || $event;
       if($event instanceof KeyboardEvent) {
         if($event.which !== 13) {
           return;
         }
         $event.stopImmediatePropagation();
       }
-
+      vm.currentQuestion.answers = vm.currentQuestion.answers || [];
       vm.currentQuestion.answers.push({
         text: vm.currentQuestion.answer.text
       });
