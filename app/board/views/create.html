@@ -17,7 +17,8 @@
   <ul>
   <li ng-repeat="q in vm.currentBoard.questions">
     <span ng-click="vm.editQuestion(q)">{{q.text}}</span>
-    <ul>
+    <span ng-click="showAnswers = !showAnswers">(Show Answers)</span>
+    <ul ng-show="showAnswers">
       <li ng-repeat="a in q.answers">{{a.text}}</li>
     </ul>
   </li>
