@@ -23,9 +23,25 @@
     "angular": "~1.4.7",
     "angular-ui-router": "ui-router#~0.2.15",
     "underscore": "~1.8.3",
-    "angular-messages": "~1.4.7"
+    "angular-messages": "~1.4.7",
+    "font-awesome": "^4.5.0",
+    "jquery": "^2.2.0",
+    "bootstrap": "@3.3.4"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.7"
+  },
+  "overrides": {
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css"
+      ]
+    },
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
   }
 }

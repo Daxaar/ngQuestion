@@ -12,6 +12,11 @@
   "license": "ISC",
   "devDependencies": {
     "bower": "^1.6.3",
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-inject": "^3.0.0",
+    "gulp-rename": "^1.2.2",
     "http-server": "^0.8.5",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.14",
@@ -20,10 +25,7 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-spec-reporter": "0.0.21",
     "live-server": "^0.8.2",
-    "phantomjs": "^1.9.18"
-  },
-  "dependencies": {
-    "bootstrap": "^3.3.6",
-    "jquery": "^2.1.4"
+    "phantomjs": "^1.9.18",
+    "wiredep": "^3.0.0"
   }
 }
