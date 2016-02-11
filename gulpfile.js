@@ -3,12 +3,15 @@ var wiredep = require('wiredep').stream;
 var inject = require('gulp-inject');
 var rename = require('gulp-rename');
 var del = require('del');
+var bowerFiles = require('main-bower-files');
 
 var depOptions = {
+  ignorePath: 'bower_components/',
   fileTypes: {
     html: {
       replace: {
-        js: '<script src="/vendor/{{filePath}}"></script>'
+        js: '<script src="lib/{{filePath}}"></script>',
+        css: '<link rel="stylesheet" href="lib/{{filePath}}" />',        
       }
     }
   }
@@ -35,7 +38,13 @@ gulp.task('clean',function () {
   return del(['dist']);
 });
 
-gulp.task('default',['clean','bower','inject','copy']);
+
+gulp.task("copy-bower",['clean'], function(){
+  gulp.src(bowerFiles(),{base:'bower_components'})
+      .pipe(gulp.dest("./dist/lib"));
+});
+
+gulp.task('default',['clean','bower','inject','copy','copy-bower']);
 
 /*
 1. Copy all bower css and js dependencies to our dist/vendor directory

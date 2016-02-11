@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
-    "start": "live-server .",
+    "start": "live-server ./dist",
     "postinstall": "bower install"
   },
   "author": "Darren Lewis",
@@ -25,7 +25,9 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-spec-reporter": "0.0.21",
     "live-server": "^0.8.2",
+    "main-bower-files": "^2.11.1",
     "phantomjs": "^1.9.18",
     "wiredep": "^3.0.0"
-  }
+  },
+  "dependencies": {}
 }
