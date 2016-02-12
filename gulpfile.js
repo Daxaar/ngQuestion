@@ -11,11 +11,13 @@ var depOptions = {
     html: {
       replace: {
         js: '<script src="lib/{{filePath}}"></script>',
-        css: '<link rel="stylesheet" href="lib/{{filePath}}" />',        
+        css: '<link rel="stylesheet" href="lib/{{filePath}}" />',
       }
     }
   }
 }
+
+var injectOptions = { ignorePath: 'app' };
 
 gulp.task('bower',['clean'], function(){
   return gulp.src('index.html')
@@ -25,13 +27,13 @@ gulp.task('bower',['clean'], function(){
 
 gulp.task('inject',['bower'], function(){
   gulp.src('./dist/index.html')
-      .pipe(inject(gulp.src(['./app/**/*.js','./app/**/*.css'],{read:false})))
+      .pipe(inject(gulp.src(['./app/**/*.js','./app/**/*.css']),injectOptions),{read:false})
       .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('copy',['clean'], function(){
-  gulp.src(['app/**/*']).pipe(gulp.dest('dist/app'));
-  gulp.src(['./app.js']).pipe(gulp.dest('dist'));
+  gulp.src(['app/**/*'],{base:'app'}).pipe(gulp.dest('dist'));
+  //gulp.src(['./app.js']).pipe(gulp.dest('dist'));
 })
 
 gulp.task('clean',function () {

@@ -12,23 +12,23 @@
     $stateProvider
     .state('create', {
       url: "/boards/create",
-      templateUrl: 'app/board/views/create.html'
+      templateUrl: 'board/views/create.html'
     })
     .state('edit', {
       url: "/boards/edit/:boardId",
-      templateUrl: 'app/board/views/create.html'
+      templateUrl: 'board/views/create.html'
     })
     .state('view',{
       url: "/boards/view",
-      templateUrl: 'app/board/views/view.html'
+      templateUrl: 'board/views/view.html'
     })
     .state('list',{
       url: "/boards",
-      templateUrl: 'app/board/views/list.html'
+      templateUrl: 'board/views/list.html'
     })
     .state('myboards',{
       url: "/myboards",
-      templateUrl: 'app/board/views/myboards.html'
+      templateUrl: 'board/views/myboards.html'
     });
   }
 
