@@ -13,5 +13,5 @@ Playground for an Angular 1.4 questionnaire project using WebApi Azure hosted ba
 
 1. Clone the repository.
 2. `npm install` (This will also install bower dependencies).
-3. `npm start` (This will run the gulp build and live server form the dist directory).
+3. `npm start` (This will run the gulp build and live server from the dist directory).
 4. To run the server open another terminal window and navigate to the `server/sailsjs` directory, then run `sails lift`.
